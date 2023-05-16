@@ -1,19 +1,21 @@
 # OsztottProjekt
 Számítástechnika III. A. Elosztott szavazórendszer megvalósítása
 
-Név:          Feladat:                                            Foglalkozott óra:
+(Code view-ben átláthatóbb)
 
-Kállai Balázs   12,13 - Lekérdezés kliensről, design                0
+Név:          Feladat:                                            
 
-Magyar Roland   3,4 - Web RPC(adatbázis), szerver oldal             0
+Kállai Balázs   12,13 - Lekérdezés kliensről, design                
 
-Iszlai Tamás    11,14 - Kliens, Bejelentkezés/Regisztráció          0
+Magyar Roland   3,4 - Web RPC(adatbázis), szerver oldal             
 
-Bíró Apor       9,10 - Adatbázis                                    0
+Iszlai Tamás    11,14 - Kliens, Bejelentkezés/Regisztráció          
 
-Lőrinczi Mátyás 7,8 - Kijelző alkalmazás                            0
+Bíró Apor       9,10 - Adatbázis                                    
 
-Török Hunor     5,6 - Szerver oldal, Web RPC(kijelzőre)             0
+Lőrinczi Mátyás 7,8 - Kijelző alkalmazás                            
 
-Veres Tivadar   1,2 - Szerver alkalmazás                            0
+Török Hunor     5,6 - Szerver oldal, Web RPC(kijelzőre)             
+
+Veres Tivadar   1,2 - Szerver alkalmazás                            
 
