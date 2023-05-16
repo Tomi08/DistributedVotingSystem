@@ -3,6 +3,10 @@ Számítástechnika III. A. Elosztott szavazórendszer megvalósítása
 
 !!! Initial branchre töltsétek fel ami van eddig. Ha nem lehet akkor új saját branchre.
 
+Tanár dokumentuma: https://docs.google.com/document/d/1Kf0Xf_AVWoobFlTRmfs_ItwHYL4bzcz_BPQfZn9Pxjc/edit
+
+Feladatot a jobb átláthatóság miatt érdemes a project szekcióban és commit alkalmával dokumentálni.
+
 (Code view-ben átláthatóbb)
 
 Név:          Feladat:                                            
