@@ -1,6 +1,8 @@
 # OsztottProjekt
 Számítástechnika III. A. Elosztott szavazórendszer megvalósítása
 
+!!! Initial branchre töltsétek fel ami van eddig. Ha nem lehet akkor új saját branchre.
+
 (Code view-ben átláthatóbb)
 
 Név:          Feladat:                                            
