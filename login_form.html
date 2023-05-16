@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bejelentkezés Űrlap</title>
+    <meta charset="utf-8">
+    <script src='utils.js'></script>
+    <script src="login_form.js"></script>
+
+    <style>
+        label {
+            font-size: 11px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .stylized {
+            font-size: 11px;
+            padding: 4px 2px;
+            border: solid 1px #aacfe4;
+            width: 120px;
+            margin: 2px 0 20px 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="elso" action="process.php" method="POST">
+        <p id='error' style="color: red;">
+
+        </p>
+        <label for="in1">Bejelentkezés:</label>
+        <input class="stylized " id="in1" type="text" name="email" value="" size="15" maxlength="20"
+            placeholder="e-mail" autofocus required>
+        <input class="stylized " style="display: none;" id="in2" type="password" name="password" value="" size="15"
+            maxlength="20" placeholder="password">
+        <a href="registration_form.html">
+            <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
+        </a>
+        <a href="forgot_password_form.html">
+            <p style="font-size: smaller;">Elfelejtett jelszo</p>
+        </a>
+        <input type="submit" name="Login" value="Login">
+        <input type="reset" name="Reset" value="Reset">
+        <input type="reset" name="Reset" value="Reset">
+
+
+    </form>
+
+</body>
+
+</html>
