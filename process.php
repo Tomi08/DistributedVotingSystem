@@ -112,8 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Forgot Password";
         $to = $_POST['email'];
         $receiver = $_POST['email'];
-        $subject = "Szia";
-        $body = "Penzert szopol?";
+        $subject = "Jelszó helyreállítása";
+        $body = "Az adott email címre jelszó helyreállítási kérelem történt,
+         amennyiben ön kérvényezte az alábbi linken lévő utasításokkal tudja megváltoztatni a jelszavát
+         http://5.15.18.155:5000/reset_password_form.html";
         $sender = "osztottprojekt@gmail.com";
         if(mail($receiver, $subject, $body, $sender)){
             echo 'Az e-mail sikeresen elküldve.';
@@ -124,7 +126,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: login_form.html");
         exit();
     }
-
+    elseif($adress[$lastIndex] == "reset_password_form.html"){
+        header("Location: login_form.html");
+        exit();
+    }
 
     
     elseif($adress[$lastIndex] == "form.php"){
