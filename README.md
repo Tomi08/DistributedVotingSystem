@@ -10,6 +10,16 @@ Adatbazis tablak: https://dbdiagram.io/d/6465bd4ddca9fb07c44d802c
 
 Feladatot a jobb átláthatóság miatt érdemes a project szekcióban és commit alkalmával dokumentálni.
 
+A feladat a szavazórendszer megvalósítása. 
+ - Kliens regisztráció -> login
+ - Kérdés/Szavazás kiküldése az érintett klienseknek
+ - Válaszok fogadása a kliensektől
+ - Válaszok kiértékelése és kivetítése
+A kérdés kiküldése után a képernyőn legyen látható a szavazás állapota(hányan szavaztak pl).
+Csak az szavazhat/válaszolhat aki be van jelentkezve és meg van jelölve az adott szavazásra.
+
+Az adatbázisban el lesz tárolva a szavazás kérdése, a válaszok és a kliensek adatai.
+
 (Code view-ben átláthatóbb)
 
 Név:          Feladat:                                            
