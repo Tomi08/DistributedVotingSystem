@@ -5,6 +5,8 @@ Számítástechnika III. A. Elosztott szavazórendszer megvalósítása
 
 Tanár dokumentuma: https://docs.google.com/document/d/1Kf0Xf_AVWoobFlTRmfs_ItwHYL4bzcz_BPQfZn9Pxjc/edit
 
+Adatbazis template: https://dbdiagram.io/d/6465bd4ddca9fb07c44d802c
+
 Feladatot a jobb átláthatóság miatt érdemes a project szekcióban és commit alkalmával dokumentálni.
 
 (Code view-ben átláthatóbb)
