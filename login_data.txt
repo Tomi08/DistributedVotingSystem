@@ -1,0 +1,78 @@
+
+
+IP: 5.15.18.155
+
+Nev: Kis Kalman
+
+email: asd@gmail.com
+
+re-email: asd@gmail.com
+
+password: Example123
+
+re-password: Example123
+
+Eletkor: 18
+
+Megye: Arad
+
+Iranyitoszam: 123456
+
+Telefon: 0765465789
+
+Nem: Ferfi
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+
+IP: 5.15.18.155
+
+Nev: Kis Kalman Rozalia
+
+email: asd2154@gmail.com
+
+re-email: asd2154@gmail.com
+
+password: ZsirosKutya123
+
+re-password: ZsirosKutya123
+
+Eletkor: 18
+
+Megye: None
+
+Iranyitoszam: 123456
+
+Telefon: 0765465789
+
+Nem: Ferfi
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+Nev: Kis Kalman
+
+email: asd1@gmail.com
+
+re-email: asd1@gmail.com
+
+password: Jelszo123
+
+re-password: Jelszo123
+
+Eletkor: 52
+
+Megye: Arad
+
+Iranyitoszam: 123456
+
+Telefon: 0765465789
+
+Nem: No
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
