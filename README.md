@@ -8,7 +8,15 @@ Tanár dokumentuma: https://docs.google.com/document/d/1Kf0Xf_AVWoobFlTRmfs_ItwH
 Adatbazis tablak: https://dbdiagram.io/d/6465bd4ddca9fb07c44d802c
  - Ezekkel a táblákkal dolgozunk, ha van javaslat javításra meghallgatom.
 
-Feladatot a jobb átláthatóság miatt érdemes a project szekcióban és commit alkalmával dokumentálni.
+A feladat struktúráját feltöltöttem a repoba, schema.png.
+
+!!! Feladatot a jobb átláthatóság miatt érdemes a project szekcióban és commit alkalmával dokumentálni.
+
+Display app-hoz python 3.9 ajánlott! pip install wxpython, pip install portalocker stb.
+
+Adatbázinak MongoDB-t használunk. Szerver-t PHP-ban írjuk meg. Design HTML+CSS+JS.
+
+A ppt.t csatolom abba rakjátok be a saját részeteket, 2-3 slide.
 
 A feladat a szavazórendszer megvalósítása. 
  - Kliens regisztráció -> login
