@@ -1,0 +1,58 @@
+
+form {
+    background-color: rgba(73, 73, 73, 0.792);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+	background-color: rgba(42, 42, 42, 0.192);
+    background-image: url('background2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+label {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.stylized {
+    font-size: 15px;
+    padding: 4px 2px;
+    border: solid 1px #aacfe4;
+    width: 175px;
+    margin: 2px 0 20px 10px;
+    display: block;
+}
+
+select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+}
+
+/* lista */
+.lista {
+    display: flex;
+  }
+  
+  .list {
+    list-style: none;
+    /* margin: 0; */
+    padding: 0;
+    margin-right: 100px;
+  }
+  
+  .list li {
+    display: inline-block;
+    margin-right: 100px; /* Optional: Add some spacing between list items */
+  }
+
+/*  */
+#profpic {
+    /* width: 150px; */
+    height: 250px;
+    float: right;
+    margin-right: 1em;
+    margin-top: 1em;
+}

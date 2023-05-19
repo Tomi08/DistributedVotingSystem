@@ -6,27 +6,8 @@
     <meta charset="utf-8">
     <script src='utils.js'></script>
     <script src="./registration_form.js"></script>
-    <style>
-        label {
-            font-size: 11px;
-            font-weight: bold;
-            text-align: right;
-        }
-
-        .stylized {
-            font-size: 11px;
-            padding: 4px 2px;
-            border: solid 1px #aacfe4;
-            width: 175px;
-            margin: 2px 0 20px 10px;
-            display: block;
-        }
-
-        select {
-            font-size: 0.9rem;
-            padding: 2px 5px;
-        }
-    </style>
+    <link href="registration_form_style.css" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body>
@@ -35,57 +16,69 @@
         <fieldset>
             <legend>Regisztrációs adatok</legend>
 
-            <label for="in1">Teljes név:</label>
-            <input class="stylized " id="in1" type="text" name="Nev" value="" size="15" maxlength="20"
-                placeholder="Vezeteknev,szemelynev" autofocus required
-                pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
-                title="Teljes nev minta: Példa Dezso Peter">
+            <div class = "lista">
 
-            <label for="in8">Email:</label>
-            <input class="stylized " id="in8" type="text" name="email" value="" size="15" maxlength="20"
-                placeholder="e-mail" required>
+                <ul class = "list">
+                    <label for="in1">Teljes név:</label>
+                    <input class="stylized " id="in1" type="text" name="Nev" value="" size="15" maxlength="20"
+                        placeholder="Vezeteknev,szemelynev" autofocus required
+                        pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
+                        title="Teljes nev minta: Példa Dezso Peter">
 
-            <input class="stylized " id="in9" type="text" name="re-email" value="" size="15" maxlength="20"
-                placeholder="re-e-mail" required>
-
-            <label for="in10">Jelszó:</label>
-            <input class="stylized " id="in10" type="password" name="password" value="" size="15" maxlength="20"
-                placeholder="password" required>
-
-            <input class="stylized " id="in11" type="password" name="re-password" value="" size="15" maxlength="20"
-                placeholder="re-password" required>
-
-            <label for="in10">Életkor:</label>
-            <input class="stylized " id="in2" type="number" name="Eletkor" value="" min="18" max="99" step="1" size="15"
-                maxlength="20" placeholder="Életkor" required>
-
-            <label for="in3">Elérhetőségek:</label>
-            <select class="stylized " id="in3" name="Megye" size="1" maxlength="20" required>
-            </select>
-
-            <input class="stylized " id="in4" type="text" name="Iranyitoszam" value="" size="15" maxlength="20"
-                placeholder="Postai irányítószám" required pattern="^[0-9]{6}$" title="Minimum 6 szamjegy">
+                    <label for="in10">Életkor:</label>
+                    <input class="stylized " id="in2" type="number" name="Eletkor" value="" min="18" max="99" step="1" size="15"
+                        maxlength="20" placeholder="Életkor" required>
+            
+                    <label for="in3">Elérhetőségek:</label>
+                    <select class="stylized " id="in3" name="Megye" size="1" maxlength="20" required>
+                    </select>
+                    <input class="stylized " id="in4" type="text" name="Iranyitoszam" value="" size="15" maxlength="20"
+                        placeholder="Postai irányítószám" required pattern="^[0-9]{6}$" title="Minimum 6 szamjegy">
 
 
-            <input class="stylized " id="in5" type="text" name="Telefon" value="" size="15" maxlength="20" required
-                placeholder="Telefon" pattern="^(?:\+?40|0)7\d{8}$" title="Romania telefonszam +40 / 07 10 szamjegy">
+                    <input class="stylized " id="in5" type="text" name="Telefon" value="" size="15" maxlength="20" required
+                    placeholder="Telefon" pattern="^(?:\+?40|0)7\d{8}$" title="Romania telefonszam +40 / 07 10 szamjegy">
 
+                </ul>
+                    
+                <ul class = "list">
+                    <label for="in8">Email:</label>
+                    <input class="stylized " id="in8" type="text" name="email" value="" size="15" maxlength="20"
+                        placeholder="e-mail" required>
+        
+                    <input class="stylized " id="in9" type="text" name="re-email" value="" size="15" maxlength="20"
+                        placeholder="re-e-mail" required>
+        
+                    <label for="in10">Jelszó:</label>
+                    <input class="stylized " id="in10" type="password" name="password" value="" size="15" maxlength="20"
+                        placeholder="password" required>
+        
+                    <input class="stylized " id="in11" type="password" name="re-password" value="" size="15" maxlength="20"
+                        placeholder="re-password" required>
+    
+                </ul>
 
+                <img src="cat.png" id="profpic">
+
+            </div>
             <labels for="in6">Kérem válassza ki a nemét:</label>
-                <input id="in6" type="radio" name="Nem" value="Ferfi" size="15" maxlength="20" required>
-                <label for="in6">Ferfi</label>
-                <input id="in7" type="radio" name="Nem" value="No" size="15" maxlength="20" required>
-                <label for="in7">No</label>
-                <br><br>
+            <input id="in6" type="radio" name="Nem" value="Ferfi" size="15" maxlength="20" required>
+            <label for="in6">Ferfi</label>
+            <input id="in7" type="radio" name="Nem" value="No" size="15" maxlength="20" required>
+            <label for="in7">No</label>
+            <br><br>
+            
+            
 
-                <label>Feltételek elfogadása
-                    <input id="feltetel" type="checkbox" name="Elfogadta a feltetel" value="Igen" required>
-                </label>
+            <label class="switch">Feltételek elfogadása
+                <input id="feltetel" type="checkbox" name="Elfogadta a feltetel" value="Igen" required>
+                <span class="slider"></span>
+            </label>
 
-                <br><br>
+            <br><br>
 
-                <input type="submit" name="Register" value="Register">
-                <input type="reset" name="Reset" value="Reset">
+            <input type="submit" name="Register" value="Register">
+            <input type="reset" name="Reset" value="Reset">
                 
         </fieldset>
 
