@@ -7,21 +7,47 @@ form {
 
 body {
 	background-color: rgba(42, 42, 42, 0.192);
-    background-image: url('background2.jpg');
-    background-repeat: no-repeat;
+    background-image: url('background3.jpg');
+    background: url("background3.jpg") no-repeat center center fixed;
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .logo {
+    position: absolute;
+    top: 10px;
+    right: 600px;
+    width: 15px;
+    height: auto;
+  }
+
+  .logo4 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    width: 15px;
+    height: auto;
+  }
+
 label {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     text-align: right;
 }
 
 .stylized {
-    font-size: 15px;
+    font-size: 20px;
     padding: 4px 2px;
     border: solid 1px #aacfe4;
-    width: 175px;
+    width: 275px;
     margin: 2px 0 20px 10px;
     display: block;
 }
@@ -40,12 +66,12 @@ select {
     list-style: none;
     /* margin: 0; */
     padding: 0;
-    margin-right: 100px;
+    /* margin-right: 100px; */
   }
   
   .list li {
     display: inline-block;
-    margin-right: 100px; /* Optional: Add some spacing between list items */
+    /* margin-right: 100px; Optional: Add some spacing between list items */
   }
 
 /*  */
@@ -53,6 +79,19 @@ select {
     /* width: 150px; */
     height: 250px;
     float: right;
-    margin-right: 1em;
-    margin-top: 1em;
+    /* margin-right: 1em; */
+    /* margin-top: 1em; */
+}
+
+#logo2 {
+    height: 250px;
+}
+
+#logo4 {
+    height: 200px;
+}
+
+fieldset {
+    width: 500px;
+    height: 500px;
 }
