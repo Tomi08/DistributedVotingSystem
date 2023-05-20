@@ -8,88 +8,89 @@
     <script src="./registration_form.js"></script>
     <script src="login_form.js"></script>
     <link href="registration_form_style.css" rel="stylesheet" type="text/css">
-    
+
 </head>
 
 <body>
-    <div class = "centered">
-        <div class="logo4">
-            <img src="voting-header2.png" alt="Logo4" id="logo4">
-        </div>
-    <div class = "lista">
+    <div class="fixed">
+        <div class="centered">
+            <div class="logo4">
+                <img src="voting-header2.png" alt="Logo4" id="logo4">
+            </div>
+            <div class="lista">
 
-        <ul class = "list">
-    <form id="elso" action="process.php" method="POST">
-        <fieldset>
-            <legend>Regisztrációs adatok</legend>
+                <ul class="list">
+                    <form id="elso" action="process.php" method="POST">
+                        <fieldset>
+                            <legend>Regisztrációs adatok</legend>
 
-            
-                    <label for="in1">Teljes név:</label>
-                    <input class="stylized " id="in1" type="text" name="Nev" value="" size="50" maxlength="55"
-                        placeholder="Vezeteknev,szemelynev" autofocus required
-                        pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
-                        title="Teljes nev minta: Példa Dezso Peter">
-                
-                    <label for="in8">Email:</label>
-                    <input class="stylized " id="in8" type="text" name="email" value="" size="50" maxlength="55"
-                        placeholder="e-mail" required>
-        
-                    <label for="in10">Jelszó:</label>
-                    <input class="stylized " id="in10" type="password" name="password" value="" size="50" maxlength="55"
-                        placeholder="password" required>
-        
-                    <input class="stylized " id="in11" type="password" name="re-password" value="" size="50" maxlength="55"
-                        placeholder="re-password" required>
-        
-            <br><br>
-            <label class="switch">Feltételek elfogadása
-                <input id="feltetel" type="checkbox" name="Elfogadta a feltetel" value="Igen" required>
-                <span class="slider"></span>
-            </label>
 
-            <br><br>
+                            <label for="in1">Teljes név:</label>
+                            <input class="stylized " id="in1" type="text" name="Nev" value="" size="50" maxlength="55"
+                                placeholder="Vezeteknev,szemelynev" autofocus required
+                                pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
+                                title="Teljes nev minta: Példa Dezso Peter">
 
-            <input type="submit" name="Register" value="Register">
-            <input type="reset" name="Reset" value="Reset">
-                
-        </fieldset>
+                            <label for="in8">Email:</label>
+                            <input class="stylized " id="in8" type="text" name="email" value="" size="50" maxlength="55"
+                                placeholder="e-mail" required>
 
-    </form>
-    </ul>
-    <ul class = "list">
-        <form id="elso" action="process.php" method="POST">
-            <fieldset>
-                <legend>Bejelentkezés:</legend>
-            <!-- <p id='error' style="color: red;">
+                            <label for="in10">Jelszó:</label>
+                            <input class="stylized " id="in10" type="password" name="password" value="" size="50"
+                                maxlength="55" placeholder="password" required>
+
+                            <input class="stylized " id="in11" type="password" name="re-password" value="" size="50"
+                                maxlength="55" placeholder="re-password" required>
+
+                            <br><br>
+                            <label class="switch">Feltételek elfogadása
+                                <input id="feltetel" type="checkbox" name="Elfogadta a feltetel" value="Igen" required>
+                                <span class="slider"></span>
+                            </label>
+
+                            <br><br>
+
+                            <input type="submit" name="Register" value="Register">
+                            <input type="reset" name="Reset" value="Reset">
+
+                        </fieldset>
+
+                    </form>
+                </ul>
+                <ul class="list">
+                    <form id="elso" action="process.php" method="POST">
+                        <fieldset>
+                            <legend>Bejelentkezés:</legend>
+                            <!-- <p id='error' style="color: red;">
     
             </p> -->
-            <label for="in1">E-mail:</label>
-            <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
-                placeholder="e-mail" autofocus required>
-            <input class="stylized " style="display: none;" id="in2" type="password" name="password" value="" size="55"
-                maxlength="20" placeholder="password">
-            <label for="in10">Jelszó:</label>
-            <input class="stylized " id="in10" type="password" name="password" value="" size="50" maxlength="55"
-                placeholder="password" required>
-            <a href="registration_form.html">
-                <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
-            </a>
-            <a href="forgot_password_form.html">
-                <p style="font-size: smaller;">Elfelejtett jelszo</p>
-            </a>
-            <input type="submit" name="Login" value="Login">
-            <input type="reset" name="Reset" value="Reset">
-            <input type="reset" name="Reset" value="Reset">
-            <img src="cat.png" id="profpic">
-        </fieldset>
-        </form>
-    </ul>
-</div>
-<div class="logo">
-    <img src="spacecat2.png" alt="Logo" id="logo2">
-</div>
-</div>
-
+                            <label for="in1">E-mail:</label>
+                            <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
+                                placeholder="e-mail" autofocus required>
+                            <input class="stylized " style="display: none;" id="in2" type="password" name="password"
+                                value="" size="55" maxlength="20" placeholder="password">
+                            <label for="in10">Jelszó:</label>
+                            <input class="stylized " id="in10" type="password" name="password" value="" size="50"
+                                maxlength="55" placeholder="password" required>
+                            <a href="registration_form.html">
+                                <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
+                            </a>
+                            <a href="forgot_password_form.html">
+                                <p style="font-size: smaller;">Elfelejtett jelszo</p>
+                            </a>
+                            <input type="submit" name="Login" value="Login">
+                            <input type="reset" name="Reset" value="Reset">
+                            <input type="reset" name="Reset" value="Reset">
+                            <img src="cat.png" id="profpic">
+                        </fieldset>
+                    </form>
+                </ul>
+            </div>
+            <div class="logo">
+                <img src="spacecat2.png" alt="Logo" id="logo2">
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
