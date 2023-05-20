@@ -9,6 +9,8 @@ body {
     background-image: url('background3.jpg');
     background: url("background3.jpg") no-repeat center center fixed;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
 html,
@@ -16,52 +18,35 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    padding-bottom: 500px;
 }
 
-body {
+.form-container {
     display: flex;
-    flex-direction: column;
-}
-
-
-
-.fixed {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .centered {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* height: 100vh; */
-    flex: 1;
+    /* flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center; */
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-}
-
-.logo {
-    margin-bottom: 650px;
-    /* margin-right: 500px; */
-    margin-left: -150px;
-    width: 15px;
-    height: auto;
-}
-
-.logo4 {
-    margin-bottom: 750px;
-    margin-right: 50px;
-    width: 15px;
-    height: auto;
+    justify-content: flex-start;
+    height: 100vh;
 }
 
 label {
     font-size: 25px;
     font-weight: bold;
     text-align: right;
+}
+
+#logo {
+    height: 150px;
+    width: 1000px;
 }
 
 .stylized {
@@ -78,43 +63,11 @@ select {
     padding: 2px 5px;
 }
 
-/* lista */
-.lista {
-    display: flex;
-}
 
-.list {
-    list-style: none;
-    /* margin: 0; */
-    padding: 0;
-    /* margin-right: 100px; */
-}
-
-.list li {
-    display: inline-block;
-    /* margin-right: 100px; Optional: Add some spacing between list items */
-}
-
-
-
-/*  */
 #profpic {
     /* width: 150px; */
     height: 250px;
     float: right;
     /* margin-right: 1em; */
     /* margin-top: 1em; */
-}
-
-#logo2 {
-    height: 250px;
-}
-
-#logo4 {
-    height: 200px;
-}
-
-fieldset {
-    width: 500px;
-    height: 500px;
 }
