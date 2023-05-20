@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 //focus
 function focusHandler(e) {
     this.style.backgroundColor = 'lightgray';
