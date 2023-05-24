@@ -1,0 +1,125 @@
+form {
+    background-color: rgba(130, 128, 128, 0.775);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    background-color: rgba(42, 42, 42, 0.192);
+    background-image: url('background3.jpg');
+    background: url("background3.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    display: flex;
+}
+
+.fixed {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered {
+    /* flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.logo {
+    margin-bottom: 650px;
+    /* margin-right: 500px; */
+    margin-left: -150px;
+    width: 15px;
+    height: auto;
+}
+
+.logo4 {
+    margin-bottom: 750px;
+    margin-right: 50px;
+    width: 15px;
+    height: auto;
+}
+
+label {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.stylized {
+    font-size: 20px;
+    padding: 4px 2px;
+    border: solid 1px #aacfe4;
+    width: 275px;
+    margin: 2px 0 20px 10px;
+    display: block;
+}
+
+select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+}
+
+/* lista */
+.lista {
+    display: flex;
+}
+
+.list {
+    list-style: none;
+    /* margin: 0; */
+    padding: 0;
+    /* margin-right: 100px; */
+}
+
+.list li {
+    display: inline-block;
+    /* margin-right: 100px; Optional: Add some spacing between list items */
+}
+
+
+
+/*  */
+#profpic {
+    /* width: 150px; */
+    height: 250px;
+    float: right;
+    /* margin-right: 1em; */
+    /* margin-top: 1em; */
+}
+
+#logo2 {
+    height: 250px;
+}
+
+#logo4 {
+    height: 200px;
+}
+
+/* fieldset:first-child {
+    width: 500px;
+    height: 500px;
+} */
+
+/* fieldset:last-child {
+    width: 1000px;
+    height: 200px;
+} */
