@@ -35,5 +35,5 @@ if __name__ == "__main__":
     my_socket = create_socket_object()
     host, port = get_local_machine()
     connect(my_socket)
-    send_message(my_socket, "Matyas@#$%Yes")
+    send_message(my_socket, "hello@#$%YESSIR")
     close_socket(my_socket)
