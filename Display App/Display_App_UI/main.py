@@ -15,10 +15,13 @@ class MyFrame(wx.Frame):
 
         self.vote_summary = ""
         self.static_text = "This program is going to display the votes sent to this display!\n" \
-                           "If your vote did not arrive please try again later!"
+                           "In this box will be displayed the things we are going to vote about\n" \
+                           "In the box below will be displayed the name and the vote sent by you!" \
+                           "You will have some options to choose from."
 
         self.my_display_votes = None
         self.my_display_quest = None
+
         self.start_button = None
         self.reset_button = None
 
@@ -33,14 +36,13 @@ class MyFrame(wx.Frame):
         self.panel = wx.Panel(self)
 
         '''SETTING THE FRAME SIZE, TITLE, BACKGROUND COLOR AND CENTERING IT'''
-        self.Centre()
-        self.SetSize((450, 300))
+        self.SetSize((800, 700))
         self.SetTitle(title='Vote Displayer')
         self.panel.SetBackgroundColour(Colour(255, 140, 0, 255))
 
         '''TEXTBOX'''
-        self.my_display_quest = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE)
-        self.my_display_votes = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE)
+        self.my_display_quest = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE | wx.TE_READONLY)
+        self.my_display_votes = wx.TextCtrl(self.panel, style=wx.TE_MULTILINE | wx.TE_READONLY)
         self.my_display_quest.SetValue(self.static_text)
 
         '''BUTTONS CREATING AND BINDING'''
@@ -49,12 +51,27 @@ class MyFrame(wx.Frame):
         self.start_button.Bind(wx.EVT_BUTTON, self.OnStartButtonPress)
         self.reset_button.Bind(wx.EVT_BUTTON, self.OnResetButtonPress)
 
+        '''Set the font size for the text controls'''
+        font_size_button = 13
+        font_size_textctrl = 15
+
+        font_quest        = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_votes        = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_start_button = wx.Font(font_size_button,   wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_reset_button = wx.Font(font_size_button,   wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+
+        self.my_display_quest.SetFont(font_quest)
+        self.my_display_votes.SetFont(font_votes)
+        self.start_button.SetFont(font_start_button)
+        self.reset_button.SetFont(font_reset_button)
+
         '''SIZERS'''
+        padding = 15
         sizer_vertical = wx.BoxSizer(wx.VERTICAL)
-        sizer_vertical.Add(self.my_display_quest, 1, wx.ALL | wx.EXPAND, 5)
-        sizer_vertical.Add(self.my_display_votes, 2, wx.ALL | wx.EXPAND, 5)
-        sizer_vertical.Add(self.start_button, 0, wx.ALL, 5)
-        sizer_vertical.Add(self.reset_button, 0, wx.ALL, 5)
+        sizer_vertical.Add(self.my_display_quest, 0, wx.ALL | wx.EXPAND, padding)
+        sizer_vertical.Add(self.my_display_votes, 2, wx.ALL | wx.EXPAND, padding)
+        sizer_vertical.Add(self.start_button, 0, wx.ALL | wx.CENTER, 5)
+        sizer_vertical.Add(self.reset_button, 0, wx.ALL | wx.CENTER, 5)
         self.panel.SetSizer(sizer_vertical)
 
         '''CREATING THE MENUBAR'''
@@ -101,7 +118,6 @@ class MyFrame(wx.Frame):
             self.file_thread.start()
 
     def update_votes_from_file(self):
-
         while self.is_running:
             with open("../votes.txt", "r+") as file:
                 portalocker.lock(file, portalocker.LOCK_SH)
