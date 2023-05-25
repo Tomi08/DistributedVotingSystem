@@ -26,9 +26,13 @@ def bind_socket(server_socket, my_host, my_port):
 
 def write_vote_to_file(name, vote):
     with open("../votes.txt", "a+") as file:
-        portalocker.lock(file, portalocker.LOCK_EX)
+        # portalocker.lock(file, portalocker.LOCK_EX)
+        msvcrt.locking(file.fileno(), msvcrt.LK_LOCK, 1)
+
         file.write(name + ", " + vote + "\n")
-        portalocker.unlock(file)
+
+        # portalocker.unlock(file)
+        msvcrt.locking(file.fileno(), msvcrt.LK_UNLCK, 1)
 
 
 def client_handler(client_socket):
