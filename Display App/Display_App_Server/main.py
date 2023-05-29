@@ -1,8 +1,7 @@
-import threading
 import time
-import socket
-import msvcrt
 import queue
+import socket
+import threading
 import portalocker
 
 mutex = threading.Lock()
@@ -24,28 +23,23 @@ def bind_socket(server_socket, my_host, my_port):
     server_socket.bind((my_host, my_port))
 
 
-def write_vote_to_file(name, vote):
+def write_vote_to_file(name, vote, sys_time):
     with open("../votes.txt", "a+") as file:
-        # portalocker.lock(file, portalocker.LOCK_EX)
-        msvcrt.locking(file.fileno(), msvcrt.LK_LOCK, 1)
-
-        file.write(name + ", " + vote + "\n")
-
-        # portalocker.unlock(file)
-        msvcrt.locking(file.fileno(), msvcrt.LK_UNLCK, 1)
+        portalocker.lock(file, portalocker.LOCK_EX)
+        file.write(name + "\t\t" + vote + "\t\t" + sys_time + "\n")
+        portalocker.unlock(file)
 
 
 def client_handler(client_socket):
     message = client_socket.recv(1024).decode()
-    name, vote = map(str, message.split('@#$%'))
-    time.sleep(0.5)
-    write_vote_to_file(name, vote)
+    name, vote, sys_time = map(str, message.split('@#$%'))
+    time.sleep(0.1)
+    write_vote_to_file(name, vote, sys_time)
 
 
 def listening(server_socket):
     server_socket.listen(10)
     print("Server listening on port 5001...")
-
     while True:
         # wait for a client to connect
         client_socket, addr = server_socket.accept()
