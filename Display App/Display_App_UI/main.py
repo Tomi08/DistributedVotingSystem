@@ -16,7 +16,7 @@ class MyFrame(wx.Frame):
         self.vote_summary = ""
         self.static_text = "This program is going to display the votes sent to this display!\n" \
                            "In this box will be displayed the things we are going to vote about\n" \
-                           "In the box below will be displayed the name and the vote sent by you!" \
+                           "In the box below will be displayed the name and the vote sent by you!\n" \
                            "You will have some options to choose from."
 
         self.my_display_votes = None
@@ -55,10 +55,10 @@ class MyFrame(wx.Frame):
         font_size_button = 13
         font_size_textctrl = 15
 
-        font_quest        = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
-        font_votes        = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
-        font_start_button = wx.Font(font_size_button,   wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
-        font_reset_button = wx.Font(font_size_button,   wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_quest = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_votes = wx.Font(font_size_textctrl, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_start_button = wx.Font(font_size_button, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        font_reset_button = wx.Font(font_size_button, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
 
         self.my_display_quest.SetFont(font_quest)
         self.my_display_votes.SetFont(font_votes)
@@ -66,12 +66,16 @@ class MyFrame(wx.Frame):
         self.reset_button.SetFont(font_reset_button)
 
         '''SIZERS'''
-        padding = 15
+        padding_button = 5
+        padding_textctrl = 15
+
         sizer_vertical = wx.BoxSizer(wx.VERTICAL)
-        sizer_vertical.Add(self.my_display_quest, 0, wx.ALL | wx.EXPAND, padding)
-        sizer_vertical.Add(self.my_display_votes, 2, wx.ALL | wx.EXPAND, padding)
-        sizer_vertical.Add(self.start_button, 0, wx.ALL | wx.CENTER, 5)
-        sizer_vertical.Add(self.reset_button, 0, wx.ALL | wx.CENTER, 5)
+
+        sizer_vertical.Add(self.my_display_quest, 0, wx.ALL | wx.EXPAND, padding_textctrl)
+        sizer_vertical.Add(self.my_display_votes, 2, wx.ALL | wx.EXPAND, padding_textctrl)
+        sizer_vertical.Add(self.start_button, 0, wx.ALL | wx.CENTER, padding_button)
+        sizer_vertical.Add(self.reset_button, 0, wx.ALL | wx.CENTER, padding_button)
+
         self.panel.SetSizer(sizer_vertical)
 
         '''CREATING THE MENUBAR'''
@@ -87,15 +91,14 @@ class MyFrame(wx.Frame):
         menubar.Append(fileMenu, '&App')
         self.SetMenuBar(menubar)
 
-    # ######################################## #
-    # ########### EVENT HANDLERS ############# #
-    # ######################################## #
+    ''' ######################################## '''
+    ''' ########### EVENT HANDLERS ############# '''
+    ''' ######################################## '''
 
     def OnQuit(self, event):
         if event:
             self.is_running = False  # Stop the file update thread
             self.Close()
-            # Delete the file contents
             with open("../votes.txt", "w") as file:
                 file.truncate()
 
@@ -104,7 +107,6 @@ class MyFrame(wx.Frame):
             self.my_display_quest.SetValue(self.static_text)
             self.start_button.Show()
             self.reset_button.Hide()
-            # Delete the file contents
             with open("../votes.txt", "w") as file:
                 file.truncate()
 
@@ -112,27 +114,27 @@ class MyFrame(wx.Frame):
         if event:
             self.start_button.Hide()
             self.reset_button.Show()
-
             self.is_running = True
             self.file_thread = threading.Thread(target=self.update_votes_from_file)
             self.file_thread.start()
+
+    ''' ######################################## '''
+    ''' ########## THREAD FUNCTIONS ############ '''
+    ''' ######################################## '''
 
     def update_votes_from_file(self):
         while self.is_running:
             with open("../votes.txt", "r+") as file:
                 portalocker.lock(file, portalocker.LOCK_SH)
-
                 lines = file.readlines()
                 vote_summary = "".join(lines)
-
                 wx.CallAfter(self.update_ui_with_votes, vote_summary)
-
                 portalocker.unlock(file)
-
             time.sleep(1)
 
     def update_ui_with_votes(self, vote_summary):
         self.my_display_votes.SetValue(vote_summary)
+        self.my_display_votes.SetInsertionPointEnd()
 
 
 def ui():
