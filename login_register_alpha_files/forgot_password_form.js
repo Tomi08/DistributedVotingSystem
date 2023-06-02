@@ -1,7 +1,7 @@
 "use strict";
 
 function blurHandler(e) {
-    this.style.backgroundColor = '';
+    /*this.style.backgroundColor = '';
     if (this.value == '') {
         this.setCustomValidity('Kötelező mező');
         this.reportValidity();
@@ -9,7 +9,8 @@ function blurHandler(e) {
     else {
         this.setCustomValidity('');
     }
-    var email = $('in1');
+    */
+    var email = $('fin1');
     console.log(email.value)
     let re = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
     if (!re.test(email.value)) {
@@ -39,7 +40,7 @@ function blurHandler(e) {
 
 window.onload = function () {
 
-    var form = $('elso'); 
+    var form = $('masodik'); 
     form.email.addEventListener("blur",blurHandler,true);
 
 }

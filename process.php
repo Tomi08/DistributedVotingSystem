@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     //echo $adress[$lastIndex];
 
-    if($adress[$lastIndex] == "login_form.html"){
+    if($_POST['Login'] == "Login"){
+        session_start();
         $database = file('login_data.txt', FILE_IGNORE_NEW_LINES);
         $email = $_POST['email'];
         $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -40,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         if ($emailFound && $passwordFound) {
             file_put_contents('error.txt','');
+            //$_SESSION['user_id'] = $loggedInUserId;
+            $_SESSION['username'] = $_POST['email'];;
             header("Location: form.php");
             exit();
           
@@ -58,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 
-    elseif($adress[$lastIndex] == "registration_form.html"){
+    elseif($_POST['Register'] == "Register"){
         echo "Registration";
         
         
@@ -89,15 +92,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        
         }
         if(!$passwordFound && !$emailFound){
-        $data = PHP_EOL . PHP_EOL .  'IP' . ': ' . $_SERVER['REMOTE_ADDR'] . PHP_EOL;
+        $data = PHP_EOL . ";;" .PHP_EOL .  'IP' . ': ' . $_SERVER['REMOTE_ADDR'] . PHP_EOL;
         file_put_contents('data.txt', $data, FILE_APPEND | LOCK_EX);
 
         foreach ($_POST as $key => $value) {
             $data = PHP_EOL .  $key . ': ' . $value  . PHP_EOL;
             file_put_contents('login_data.txt', $data, FILE_APPEND | LOCK_EX);
         }
-           
-           header("Location: login_form.html");
+        $data = PHP_EOL . ";;" .PHP_EOL ;
+        file_put_contents('data.txt', $data, FILE_APPEND | LOCK_EX);
+
+           header("Location: registration_form.html");
            exit();
         }
         
@@ -108,14 +113,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 
-    elseif($adress[$lastIndex] == "forgot_password_form.html"){
+    elseif($_POST['Send'] == "Send"){
         echo "Forgot Password";
         $to = $_POST['email'];
         $receiver = $_POST['email'];
         $subject = "Jelszó helyreállítása";
         $body = "Az adott email címre jelszó helyreállítási kérelem történt,
          amennyiben ön kérvényezte az alábbi linken lévő utasításokkal tudja megváltoztatni a jelszavát
-         http://5.15.18.155:5000/reset_password_form.html";
+         http://localhost:80/reset_password_form.html";
         $sender = "osztottprojekt@gmail.com";
         if(mail($receiver, $subject, $body, $sender)){
             echo 'Az e-mail sikeresen elküldve.';
@@ -123,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo 'Hiba történt az e-mail küldésekor.';
         }
       
-        header("Location: login_form.html");
+        header("Location: registration_form.html");
         exit();
     }
     elseif($adress[$lastIndex] == "reset_password_form.html"){
