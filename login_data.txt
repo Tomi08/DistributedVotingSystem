@@ -113,3 +113,15 @@ Elfogadta_a_feltetel: Igen
 
 Register: Register
 ;;
+Nev: Alma Korte
+
+email: alma@gmail.com
+
+password: Alma1234
+
+re-password: Alma1234
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+;;

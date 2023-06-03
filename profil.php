@@ -65,9 +65,9 @@
         //echo $line . '<br>';
         if(!empty(trim($line))){
             $data = explode(': ',$line);    
-            //echo $data[1];
+            echo $data[0];
             //echo "<p>" . $line . "</p>";
-            if($data[0] === 'email' && $data[1] === "alma@pelda.ro"){
+            if($data[0] === 'email' && $data[1] === $loggedInUsername){
                 
                 //echo "<br>Email megtalalva";
                 $foundUser = true;

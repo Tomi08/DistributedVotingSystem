@@ -9,64 +9,10 @@
     <!-- <script src="./login_form.js"></script> -->
     <!--<script src="./forgot_password_form.js "></script> -->
     <link href="registration_form_style.css" rel="stylesheet" type="text/css">
-    
-
 </head>
 
 <body>
     <div class="centered">
-        <!-- <div class="stars">
-            <div class="box-of-star1">
-                <div class="star star-position1"></div>
-                <div class="star star-position2"></div>
-                <div class="star star-position3"></div>
-                <div class="star star-position4"></div>
-                <div class="star star-position5"></div>
-                <div class="star star-position6"></div>
-                <div class="star star-position7"></div>
-                <div class="star star-position8"></div>
-            </div>
-            <div class="box-of-star2">
-                <div class="star star-position1"></div>
-                <div class="star star-position2"></div>
-                <div class="star star-position3"></div>
-                <div class="star star-position4"></div>
-                <div class="star star-position5"></div>
-                <div class="star star-position6"></div>
-                <div class="star star-position7"></div>
-                <div class="star star-position8"></div>
-            </div>
-            <div class="box-of-star3">
-                <div class="star star-position1"></div>
-                <div class="star star-position2"></div>
-                <div class="star star-position3"></div>
-                <div class="star star-position4"></div>
-                <div class="star star-position5"></div>
-                <div class="star star-position6"></div>
-                <div class="star star-position7"></div>
-                <div class="star star-position8"></div>
-            </div>
-            <div class="box-of-star4">
-                <div class="star star-position1"></div>
-                <div class="star star-position2"></div>
-                <div class="star star-position3"></div>
-                <div class="star star-position4"></div>
-                <div class="star star-position5"></div>
-                <div class="star star-position6"></div>
-                <div class="star star-position7"></div>
-                <div class="star star-position8"></div>
-            </div>
-            <div class="box-of-star5">
-                <div class="star star-position1"></div>
-                <div class="star star-position2"></div>
-                <div class="star star-position3"></div>
-                <div class="star star-position4"></div>
-                <div class="star star-position5"></div>
-                <div class="star star-position6"></div>
-                <div class="star star-position7"></div>
-                <div class="star star-position8"></div>
-            </div>
-        </div> -->
         <div>
             <img src="voting-header2.png" id="logo">
         </div>
@@ -75,7 +21,7 @@
                 <form id="elso" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Regisztrációs adatok</legend>
-                        <label for="rin1">Teljes név:</label>
+                        <label for="rin1">Teljes név: Guszti</label>
                         <input class="stylized " id="rin1" type="text" name="Nev" value="" size="50" maxlength="55"
                             placeholder="Vezeteknev,szemelynev" required
                             pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
@@ -106,17 +52,11 @@
                 <form id="elso_" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Bejelentkezés:</legend>
-                        <!-- <p id='error' style="color: red;">
-
-        </p> -->
                         <label for="in1">E-mail:</label>
                         <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
-                            placeholder="e-mail"  required>
+                            placeholder="e-mail" required>
                         <input class="stylized " style="display: none;" id="in2" type="password" name="password"
                             value="" size="55" maxlength="20" placeholder="password">
-                        <!--<label for="in2">Jelszó:</label>
-                        <input class="stylized " id="in2" type="password" name="password" value="" size="50"
-                            maxlength="55" placeholder="password" required>-->
                         <a href="registration_form.html">
                             <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
                         </a>
@@ -135,21 +75,14 @@
             <form id="masodik" action="process.php" method="POST">
                 <fieldset style="width: 1032px; height: auto;">
                     <legend>Jelszó helyreállítása</legend>
-
-
                     <label for="fin8">Email:</label>
                     <input class="stylized " id="fin1" type="text" name="email" value="" size="50" maxlength="55"
-                        placeholder="e-mail" required >
-
-
+                        placeholder="e-mail" required>
                     <input type="submit" name="Send" value="Send">
                     <input type="reset" name="Reset" value="Reset">
-
                 </fieldset>
-
             </form>
         </div>
-
     </div>
 </body>
 
