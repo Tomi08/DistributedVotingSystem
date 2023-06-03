@@ -40,14 +40,22 @@
         <li><a href="vote.php">Szavazás állása</a></li>
         
         
-        <li class="right"><a href="registration_form.html">Kijelentkezés</a></li>
+        <li class="right"><a href="logout.php">Kijelentkezés</a></li>
         <li class="right"><a href="settings.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
     <h2>Kérdőív</h2>
     <?php
     session_start();
-    echo $_SESSION['username'];
+    
+    //echo $_SESSION['username'];
+    
+    if(!isset($_SESSION['username']))
+    {
+        header("Location: registration_form.html");
+        exit();
+    }
+    
     if (isset($_SESSION["errors"])) {
         foreach ($_SESSION["errors"] as $error) {
             echo "<p>$error</p>";

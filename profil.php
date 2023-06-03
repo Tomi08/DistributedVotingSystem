@@ -34,18 +34,25 @@
     </style
 </head>
 <body>
-    <h1>Profil</h1>
+   
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
         
         
-        <li class="right"><a href="registration_form.html">Kijelentkezés</a></li>
+        <li class="right"><a href="logout.php">Kijelentkezés</a></li>
         <li class="right"><a href="settings.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
+    <h2>Profil</h1>
     <?php
     session_start();
+
+    if(!isset($_SESSION['username']))
+    {
+        header("Location: registration_form.html");
+        exit();
+    }
     // Fájl beolvasása
     //$file = fopen('login_data.txt','r');
     $database = file('login_data.txt', FILE_IGNORE_NEW_LINES);
