@@ -113,3 +113,16 @@ Elfogadta_a_feltetel: Igen
 
 Register: Register
 ;;
+
+email: iszlai9@gmail.com
+
+Nev: Iszlai Tamas
+
+password: Nilus123
+
+re-password: Nilus123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+;;

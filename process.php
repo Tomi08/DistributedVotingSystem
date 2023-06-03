@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     //echo $adress[$lastIndex];
 
-    if($_POST['Login'] == "Login"){
+    if(isset($_POST['Login'])){
         session_start();
         $database = file('login_data.txt', FILE_IGNORE_NEW_LINES);
         $email = $_POST['email'];
@@ -57,11 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         
         file_put_contents('error.txt', $error, FILE_APPEND | LOCK_EX);
-        header("Location: login_form.html");
+        header("Location: registration_form.html");
     }
 
 
-    elseif($_POST['Register'] == "Register"){
+    elseif(isset($_POST['Register'])){
         echo "Registration";
         
         
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo $line . '<br>';
             if(!empty(trim($line))){
                 $data = explode(': ',$line);    
-                echo $data[1];
+                //echo $data[1];
                 if($data[0] === 'email' && $data[1] === $email){
                     echo "<br>Email megtalalva";
                     $emailFound = true;
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 
-    elseif($_POST['Send'] == "Send"){
+    elseif(isset($_POST['Send'])){
         echo "Forgot Password";
         $to = $_POST['email'];
         $receiver = $_POST['email'];

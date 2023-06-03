@@ -67,7 +67,7 @@
             $data = explode(': ',$line);    
             //echo $data[1];
             //echo "<p>" . $line . "</p>";
-            if($data[0] === 'email' && $data[1] === "alma@pelda.ro"){
+            if($data[0] === 'email' && $data[1] === $loggedInUsername){
                 
                 //echo "<br>Email megtalalva";
                 $foundUser = true;
