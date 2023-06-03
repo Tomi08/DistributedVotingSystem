@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     //echo $adress[$lastIndex];
 
-    if (isset($_POST["Login"])) {
+    if(isset($_POST['Login'])){
         session_start();
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
         $email = $_POST["email"];
@@ -58,10 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $error = "Hibás felhasználónév vagy jelszó!";
         }
-
-        file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
+        
+        file_put_contents('error.txt', $error, FILE_APPEND | LOCK_EX);
         header("Location: registration_form.html");
-    } elseif (isset($_POST["Register"])) {
+    }
+
+
+    elseif(isset($_POST['Register'])){
         echo "Registration";
 
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
@@ -71,12 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $emailFound = false;
         $passwordFound = false;
 
+
         foreach ($database as $line) {
-            echo $line . "<br>";
-            if (!empty(trim($line))) {
-                $data = explode(": ", $line);
+            echo $line . '<br>';
+            if(!empty(trim($line))){
+                $data = explode(': ',$line);    
                 //echo $data[1];
-                if ($data[0] === "email" && $data[1] === $email) {
+                if($data[0] === 'email' && $data[1] === $email){
                     echo "<br>Email megtalalva";
                     $emailFound = true;
                     break;
@@ -112,7 +116,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: registration_form.html");
             exit();
         }
-    } elseif (isset($_POST["Send"])) {
+    }
+
+
+    elseif(isset($_POST['Send'])){
         echo "Forgot Password";
         $to = $_POST["email"];
         $receiver = $_POST["email"];
