@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kérdőív</title>
-    <link href="form_style.css" rel="stylesheet" type="text/css">
+
+    <title>Szavazás készitése</title>
+    <link href="registration_form_style.css" rel="stylesheet" type="text/css">
     <style>
         ul {
             list-style-type: none;
@@ -41,33 +42,21 @@
         <li><a href="vote.php">Szavazás állása</a></li>
         <li><a href="votecreate.php">Szavazás készitése</a></li>
         
-        
         <li class="right"><a href="logout.php">Kijelentkezés</a></li>
-        <li class="right"><a href="profil.php">Beállítások</a></li>
+        <li class="right"><a href="prfoil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
-    <div class="centered">
-    <h2>Kérdőív</h2>
+    <h2>Szavazás állása</h1>
     <?php
     session_start();
-    
-    // echo $_SESSION['username'];
-    
     if(!isset($_SESSION['username']))
     {
         header("Location: registration_form.html");
         exit();
     }
-    
-    if (isset($_SESSION["errors"])) {
-        foreach ($_SESSION["errors"] as $error) {
-            echo "<p>$error</p>";
-        }
-        unset($_SESSION["errors"]);
-    }
+    echo "Eddigi szavazatok szama : "
+
     ?>
-    
-    <?php include "form_generator.php"; ?>
-    </div>  
+
 </body>
 </html>

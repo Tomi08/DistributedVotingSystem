@@ -28,6 +28,7 @@ $questions1 = json_decode($response, true);
 
 //echo 'Lekert kerdesek' . $questions1 . '<br><br>';
 
+
 $questions = array(
   array(
     'question' => 'Add meg a neved',
@@ -57,12 +58,17 @@ $questions = array(
 );
 
   foreach ($questions as $question) {
+    echo '<div id="formdiv">';
+    echo '<form action="process.php" method="POST">';
     echo '<label for="' . $question['name'] . '">' . $question['question'] . '</label><br>';
     echo '<input type="' . $question['type'] . '" id="' . $question['name'] . '" name="' . $question['name'] . '"';
     if ($question['required']) {
       echo ' required';
     }
-    echo '><br><br>';
+    echo '<br><button type="submit">Küldés</button>';
+    echo '<br></form>';
+    echo '<br><br>';
+    echo '</div>';
   }
 
 

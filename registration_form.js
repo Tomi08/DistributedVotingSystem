@@ -138,6 +138,23 @@ window.onload = function () {
         input.addEventListener("blur", rblurHandler, true);
     })
 
+       fetch('error.txt')
+        .then(function (response) {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Hiba történt a fájl betöltése közben.');
+            }
+        })
+        .then(function (data) {
+            
+            error.textContent = data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        
+
 
 
     //setOptions();
