@@ -113,15 +113,49 @@ Elfogadta_a_feltetel: Igen
 
 Register: Register
 ;;
-Nev: Alma Korte
 
-email: alma@gmail.com
+email: iszlai9@gmail.com
 
-password: Alma1234
+Nev: Iszlai Tamas
 
-re-password: Alma1234
+password: Nilus123
+
+re-password: Nilus123
 
 Elfogadta_a_feltetel: Igen
 
 Register: Register
+;;
+;;
+IP: ::1
+
+Nev: Kis Kalman
+
+email: kalman12@gmail.com
+
+password: Kalman123
+
+re-password: Kalman123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+email: alma2@gmail.com
+
+Nev: Kuplung Macska
+
+password: Alma12345
+
+re-password: Alma12345
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
 ;;

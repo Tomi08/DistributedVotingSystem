@@ -1,0 +1,45 @@
+<?php
+
+echo "NA";
+
+function OpenCon(){
+    $dbhost = "192.168.1.162";
+    $dbuser = "aporka";
+    $dbpass = "nehezjelszo";
+    $db = "aporka";
+    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+
+    if(!($conn -> error)){
+        echo "Succesfuly connected to the database!";
+    }
+
+    return $conn;
+}
+ 
+function CloseCon($conn){
+    $conn -> close();
+}
+?>
+
+<!-- <?php
+
+echo "NA";
+
+function OpenCon(){
+    $dbhost = "localhost";
+    $dbuser = "osztott";
+    $dbpass = "Nilus123";
+    $db = "osztott";
+    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+
+    if(!($conn -> error)){
+        echo "Succesfuly connected to the database!";
+    }
+
+    return $conn;
+}
+ 
+function CloseCon($conn){
+    $conn -> close();
+}
+?> -->

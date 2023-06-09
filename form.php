@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Kérdőív</title>
+    <link href="form_style.css" rel="stylesheet" type="text/css">
     <style>
         ul {
             list-style-type: none;
@@ -34,21 +35,24 @@
     </style
 </head>
 <body>
-    
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
+        <li><a href="votecreate.php">Szavazás készitése</a></li>
         
         
         <li class="right"><a href="logout.php">Kijelentkezés</a></li>
-        <li class="right"><a href="settings.php">Beállítások</a></li>
+        <li class="right"><a href="profil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
+    <div>
+    <div class="centered">
     <h2>Kérdőív</h2>
     <?php
     session_start();
     
-    echo $_SESSION['username'];
+    // echo $_SESSION['username'];
     
     if(!isset($_SESSION['username']))
     {
@@ -63,9 +67,8 @@
         unset($_SESSION["errors"]);
     }
     ?>
-    <form action="process.php" method="POST">
-        <?php include "form_generator.php"; ?>
-        <button type="submit">Küldés</button>
-    </form>
+    <?php include "szavazat.php"; ?>
+    <?php include "form_generator.php"; ?>
+    </div>  
 </body>
 </html>

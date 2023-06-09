@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>Profil oldal</title>
+    <link href="form_style.css" rel="stylesheet" type="text/css">
     <style>
         ul {
             list-style-type: none;
@@ -34,17 +36,18 @@
     </style
 </head>
 <body>
-   
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
-        
+        <li><a href="votecreate.php">Szavazás készitése</a></li>
         
         <li class="right"><a href="logout.php">Kijelentkezés</a></li>
-        <li class="right"><a href="settings.php">Beállítások</a></li>
+        <li class="right"><a href="profil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
-    <h2>Profil</h1>
+    </div>
+    <h2>Profil</h2>
     <?php
     session_start();
 
@@ -65,7 +68,7 @@
         //echo $line . '<br>';
         if(!empty(trim($line))){
             $data = explode(': ',$line);    
-            echo $data[0];
+            //echo $data[1];
             //echo "<p>" . $line . "</p>";
             if($data[0] === 'email' && $data[1] === $loggedInUsername){
                 
@@ -96,6 +99,7 @@
     
 
     // Felhasználói adatok kiírása
+    
     if (!empty($userData)) {
         echo "<p>Név: " . $userData['Nev'] . "</p>";
         echo "<p>Email: " . $userData['email'] . "</p>";

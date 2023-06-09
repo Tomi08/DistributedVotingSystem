@@ -5,6 +5,7 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/registration_form.html');
+	header('Location: '.$uri.'/dashboard/');
 	exit;
 ?>
+Something is wrong with the XAMPP installation :-(

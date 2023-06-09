@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Szavazás állása</title>
+    <link href="form_style.css" rel="stylesheet" type="text/css">
     <style>
         ul {
             list-style-type: none;
@@ -34,27 +36,45 @@
     </style
 </head>
 <body>
-    
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
-        
+        <li><a href="votecreate.php">Szavazás készitése</a></li>
         
         <li class="right"><a href="logout.php">Kijelentkezés</a></li>
-        <li class="right"><a href="settings.php">Beállítások</a></li>
+        <li class="right"><a href="prfoil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
-    <h2>Szavazás állása</h1>
+    </div>
+    <div class="centered">
+    <h2>Szavazás állása</h2>
+    <?php include "szavazat.php"; ?>
+   
+    
     <?php
+    session_start();
+    
+    $questionAnswerPercentages = get_question_answer_percentages();
 
-    if(!isset($_SESSION['username']))
-    {
-        header("Location: registration_form.html");
-        exit();
+    // Eredmények kiíratása
+
+    foreach ($questionAnswerPercentages as $kerdes => $valaszok) {
+    
+    echo '<div class="szavazasok">';
+    echo '<label>' .  $kerdes . '</label>';
+
+    foreach ($valaszok as $valasz => $szazalek) {
+        echo "<br>Válasz: " . $valasz . "<br>";
+        echo "Százalékos arány: " . $szazalek . "%<br>";
+        echo '<br>';  
     }
-    echo "Eddigi szavazatok szama : "
-
+    echo '</div>';
+    echo '<br><br>';
+    } 
     ?>
+    </div>
+
 
 </body>
 </html>

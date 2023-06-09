@@ -1,10 +1,10 @@
 <?php
-// print_r($REQUEST_METHOD);
-// echo '<pre>';
-// print_r($_SERVER);
-// echo '</pre>';
-// echo "Sikerult";
+echo "Sikerult";
+echo '<pre>';
 print_r($_POST);
+echo '</pre>';
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "<h2>Beérkező adatok:</h2>";
 
@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     //echo $adress[$lastIndex];
 
-    if(isset($_POST['Login'])){
-        session_start();
+    if (isset($_POST["Login"])) {
+        
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
         $email = $_POST["email"];
         $ipAddress = $_SERVER["REMOTE_ADDR"];
@@ -28,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo $line . "<br>";
             if (!empty(trim($line))) {
                 $data = explode(": ", $line);
-                echo $data[1];
+                //echo $data[1];
                 if ($data[0] === "email" && $data[1] === $email) {
                     echo "<br>Email megtalalva";
                     $emailFound = true;
                 }
                 if(trim($line) === ";;" && $emailFound && !$passwordFound){
                     $foundUser= false;
-                    $passwordFound = true;
+                    $passwordFound = false;
                     
                 }
                 if ($data[0] === "password" && $data[1] === $password) {
@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if ($emailFound && $passwordFound) {
+            session_start();
             file_put_contents("error.txt", "");
             //$_SESSION['user_id'] = $loggedInUserId;
             $_SESSION["username"] = $_POST["email"];
@@ -58,13 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $error = "Hibás felhasználónév vagy jelszó!";
         }
-        
-        file_put_contents('error.txt', $error, FILE_APPEND | LOCK_EX);
+
+        file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
         header("Location: registration_form.html");
-    }
-
-
-    elseif(isset($_POST['Register'])){
+    } elseif (isset($_POST["Register"])) {
         echo "Registration";
 
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
@@ -74,13 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $emailFound = false;
         $passwordFound = false;
 
-
         foreach ($database as $line) {
-            echo $line . '<br>';
-            if(!empty(trim($line))){
-                $data = explode(': ',$line);    
+            //echo $line . "<br>";
+            if (!empty(trim($line))) {
+                $data = explode(": ", $line);
                 //echo $data[1];
-                if($data[0] === 'email' && $data[1] === $email){
+                if ($data[0] === "email" && $data[1] === $email) {
                     echo "<br>Email megtalalva";
                     $emailFound = true;
                     break;
@@ -116,10 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: registration_form.html");
             exit();
         }
-    }
-
-
-    elseif(isset($_POST['Send'])){
+    } elseif (isset($_POST["Send"])) {
         echo "Forgot Password";
         $to = $_POST["email"];
         $receiver = $_POST["email"];
@@ -137,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: registration_form.html");
         exit();
     } elseif ($adress[$lastIndex] == "reset_password_form.html") {
-        header("Location: login_form.html");
+        header("Location: registration_form.html");
         exit();
     } elseif ($adress[$lastIndex] == "form.php") {
         echo "Form";
@@ -160,7 +154,7 @@ if (!empty($errors)) {
     // Továbbítás az űrlapra és hibaüzenetek megjelenítése
     session_start();
     $_SESSION["errors"] = $errors;
-    header("Location: form.php");
-    exit();
+    //header("Location: form.php");
+    //exit();
 }
 ?>
