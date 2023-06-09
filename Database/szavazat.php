@@ -5,6 +5,7 @@
 include "connection.php";
 //POST
 //UJ SZAVAZAT LETREHOZASA
+/*
 function record_vote($kerdes_id,$voter_name, $vote, $kerdes){
     $conn = GetCon();
 
@@ -18,7 +19,7 @@ function record_vote($kerdes_id,$voter_name, $vote, $kerdes){
     }
 
     // Close_con($conn);
-}
+} */
 
 //GET
 //SZAVAZAT LEKERESE SZAVAZO NEVE ALAPJAN
@@ -72,6 +73,24 @@ function get_question_answer_percentages() {
     }
 
     Close_con($conn);
+}
+
+function getQuestion(){
+    $conn = GetCon();
+
+    $sql = "SELECT kerdes FROM kerdes";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        // $ret = "kerdes_id: " . $row["kerdes_id"]. " - kerdes: " . $row["kerdes"]. "<br>";
+		$ret = $row;
+    } else {
+        $ret = "Client not found!";
+    }
+
+    // CloseCon($conn);
+    return $ret;
 }
 
 

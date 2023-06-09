@@ -26,19 +26,38 @@ body {
     
 }
 
+.szavazasok {
+    padding: 10px;
+    outline: 2px solid rgba(0, 0, 0, 0.644);
+    border-radius: 10px;
+    background-color: rgba(130, 128, 128, 0.775);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    width: 400px;
+    height: auto;
+}
+
+.valasz {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+}
 
 .centered {
     /* flex: 1;
     display: flex;
     justify-content: center;
     align-items: center; */
-    
-    padding-top: 50px;
+    /* background-color: rgba(130, 128, 128, 0.775);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* padding-top: 150px; */
     display: flex;
+
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 h2 {
@@ -85,5 +104,4 @@ select {
     /* margin-right: 1em; */
     /* margin-top: 1em; */
 }
-
 

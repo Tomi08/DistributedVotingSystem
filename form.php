@@ -35,7 +35,7 @@
     </style
 </head>
 <body>
-    
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
@@ -46,6 +46,7 @@
         <li class="right"><a href="profil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
+    <div>
     <div class="centered">
     <h2>Kérdőív</h2>
     <?php
@@ -66,7 +67,7 @@
         unset($_SESSION["errors"]);
     }
     ?>
-    
+    <?php include "szavazat.php"; ?>
     <?php include "form_generator.php"; ?>
     </div>  
 </body>

@@ -36,7 +36,7 @@
     </style
 </head>
 <body>
-   
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
@@ -46,7 +46,8 @@
         <li class="right"><a href="profil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
-    <h2>Profil</h1>
+    </div>
+    <h2>Profil</h2>
     <?php
     session_start();
 

@@ -23,49 +23,48 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
+include "szavazat.php";
 
 $questions1 = json_decode($response, true);
 
 //echo 'Lekert kerdesek' . $questions1 . '<br><br>';
+$questions = getQuestion();
 
-
-$questions = array(
-  array(
-    'question' => 'Add meg a neved',
-    'name' => 'name',
-    'type' => 'text',
-    'required' => true
-  ),
-  array(
-    'question' => 'Mi a kedvenc színed?',
-    'name' => 'favorite_color',
-    'type' => 'text',
-    'required' => false
-  ),
-  array(
-    'question' => 'Hány éves vagy?',
-    'name' => 'age',
-    'type' => 'number',
-    'required' => true
-  ),
-    array(
-    'question' => 'Szereted a banant?',
-    'name' => 'banan',
-    'type' => 'text',
-    'required' => false
-  ),
-  // További kérdések...
-);
+// $questions = array(
+//   array(
+//     'question' => 'Add meg a neved',
+//     'name' => 'name',
+//     'type' => 'text',
+//     'required' => true
+//   ),
+//   array(
+//     'question' => 'Mi a kedvenc színed?',
+//     'name' => 'favorite_color',
+//     'type' => 'text',
+//     'required' => false
+//   ),
+//   array(
+//     'question' => 'Hány éves vagy?',
+//     'name' => 'age',
+//     'type' => 'number',
+//     'required' => true
+//   ),
+//     array(
+//     'question' => 'Szereted a banant?',
+//     'name' => 'banan',
+//     'type' => 'text',
+//     'required' => false
+//   ),
+//   // További kérdések...
+// );
 
   foreach ($questions as $question) {
     echo '<div id="formdiv">';
     echo '<form action="process.php" method="POST">';
-    echo '<label for="' . $question['name'] . '">' . $question['question'] . '</label><br>';
-    echo '<input type="' . $question['type'] . '" id="' . $question['name'] . '" name="' . $question['name'] . '"';
-    if ($question['required']) {
-      echo ' required';
-    }
-    echo '<br><button type="submit">Küldés</button>';
+    echo '<label for="name">' . $question['kerdes'] . '</label><br><br>';
+    echo '<input type="varchar">';
+   
+    echo '<button type="submit">Küldés</button>';
     echo '<br></form>';
     echo '<br><br>';
     echo '</div>';

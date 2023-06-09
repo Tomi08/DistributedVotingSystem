@@ -3,7 +3,8 @@
 <head>
 
     <title>Szavazás készitése</title>
-    <link href="registration_form_style.css" rel="stylesheet" type="text/css">
+    <link href="form_style.css" rel="stylesheet" type="text/css">
+    <script src="votecreate.js"></script>
     <style>
         ul {
             list-style-type: none;
@@ -36,7 +37,7 @@
     </style
 </head>
 <body>
-    
+    <div>
     <ul>
         <li><a href="form.php">Kezdőlap</a></li>
         <li><a href="vote.php">Szavazás állása</a></li>
@@ -46,7 +47,9 @@
         <li class="right"><a href="prfoil.php">Beállítások</a></li>
         <li class="right"><a href="profil.php">Profil</a></li>
     </ul>
-    <h2>Szavazás állása</h1>
+    </div>
+    <div class="centered">
+    <h2>Szavazás készitése</h2>
     <?php
     session_start();
     if(!isset($_SESSION['username']))
@@ -54,9 +57,19 @@
         header("Location: registration_form.html");
         exit();
     }
-    echo "Eddigi szavazatok szama : "
+
+    echo '<div id="formdiv">';
+    echo '<form id="eredmeny" action="process.php" method="POST">';
+    echo '<label> Adj meg egy kérdést </label><br>';
+    echo '<input type="text" name="ezakerdes"';
+    
+    echo '<br><button id="gomb" type="submit">Küldés</button>';
+    echo '<br></form>';
+    echo '<br><br>';
+    echo '</div>';
 
     ?>
+    </div>
 
 </body>
 </html>
