@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "647b19ee6f24fd8304ec643f"
+  },
+  "username": "Jnacsi",
+  "email": "jancsi@ljb.vd",
+  "password": "asdasd",
+  "valasz_id": null
+},
+{
+  "_id": {
+    "$oid": "647b1d271d6ac10aba81ae6e"
+  },
+  "username": "John Doe",
+  "email": "john@ljb.vd",
+  "password": "valami",
+  "valasz_id": null
+},
+{
+  "_id": {
+    "$oid": "647b1d7a1b189cd2c3ce48bc"
+  },
+  "username": "John Doe",
+  "email": "john@ljb.vd",
+  "password": "valami",
+  "valasz_id": null
+}]
