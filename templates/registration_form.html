@@ -4,11 +4,11 @@
 <head>
     <title>Regisztrációs Űrlap</title>
     <meta charset="utf-8">
-    <script src='utils.js'></script>
-    <script src="./registration_form.js"></script>
+    <script src='static/utils.js'></script>
+    <script src="./static/registration_form.js"></script>
     <!-- <script src="./login_form.js"></script> -->
     <!--<script src="./forgot_password_form.js "></script> -->
-    <link href="registration_form_style.css" rel="stylesheet" type="text/css">
+    <link href="./static/registration_form_style.css" rel="stylesheet" type="text/css">
     
 
 </head>
@@ -68,7 +68,7 @@
             </div>
         </div> -->
         <div>
-            <img src="voting-header2.png" id="logo">
+            <img src="static/voting-header2.png" id="logo">
         </div>
         <div class="form-container">
             <div class="elsok">
@@ -103,7 +103,7 @@
                 </form>
             </div>
             <div class="elsok">
-                <form id="elso_" action="process.php" method="POST">
+                <form id="elso_" action="form.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Bejelentkezés:</legend>
                         <!-- <p id='error' style="color: red;">
@@ -126,7 +126,7 @@
                         <input type="submit" name="Login" value="Login">
                         <input type="reset" name="Reset" value="Reset">
                         <input type="reset" name="Reset" value="Reset">
-                        <img src="cat.png" id="profpic">
+                        <img src="static/cat.png" id="profpic">
                     </fieldset>
                 </form>
             </div>
