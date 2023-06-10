@@ -62,7 +62,7 @@ function keyUpHandler(e) {
 
 window.onload = function () {
 
-    var form = $('elso');
+    var form = $('elso_');
     var error = $('error');
     form.email.addEventListener("focus", focusHandler, true);
     form.email.addEventListener("blur", blurHandler, true);
@@ -71,7 +71,7 @@ window.onload = function () {
     form.password.addEventListener("focus", focusHandler, true);
     form.password.addEventListener("blur", blurHandler, true);
     form.password.addEventListener("keyup", keyUpHandler, true);
-    fetch('error.txt')
+    /*fetch('error.txt')
         .then(function (response) {
             if (response.ok) {
                 return response.text();
@@ -86,5 +86,6 @@ window.onload = function () {
         .catch(function (error) {
             console.log(error);
         });
+        */
 
 }

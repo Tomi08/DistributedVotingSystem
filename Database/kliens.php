@@ -1,34 +1,33 @@
 <?php
-
-include 'db_connection.php';
+include "connection.php";
 
 //POST
+//UJ KLIENS LETREHOZASA
 
-    //UJ KLIENS LETREHOZASA
 
 function postNewClient($username, $email, $password){
-    $conn = OpenCon();
+    echo "bent vagyok";
+    $conn = GetCon();
 
     $sql = "INSERT INTO kliens(username, email, password, valasz_id) VALUES ('$username', '$email', '$password', null)";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New client created successfully";
+        echo "New client created successfully". PHP_EOL;
+        
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error . PHP_EOL;
     }
 
-    CloseCon($conn);
+    // CloseCon($conn);
 }
 
 //GET 
-
-    //KLIENS LEKERESE ID ALAPJAN
+//KLIENS LEKERESE ID ALAPJAN
 
 function getClientById($id){
-    $conn = OpenCon();
+    $conn = GetCon();
 
     $sql = "SELECT id, username, email, password, valasz_id FROM kliens WHERE id=$id";
-
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -38,17 +37,16 @@ function getClientById($id){
         $ret = "Client not found!";
     }
 
-    CloseCon($conn);
+    // CloseCon($conn);
     return $ret;
 }
 
     //KLIENS LEKERESE EMAIL ALAPJAN
 
 function getClientByEmail($email){
-    $conn = OpenCon();
+    $conn = GetCon();
 
     $sql = "SELECT id, username, email, password, valasz_id FROM kliens WHERE email LIKE '$email'";
-
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
@@ -58,8 +56,10 @@ function getClientByEmail($email){
         $ret = "Client not found!";
     }
 
-    CloseCon($conn);
+    // CloseCon($conn);
     return $ret;
 }
+
+
 
 ?>

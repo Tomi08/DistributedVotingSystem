@@ -1,27 +1,44 @@
 <?php
   include "kliens.php";
+  include "szavazat.php";
+  include "kerdes.php";
 
   //POST
 
     //UJ KLIENS LETREHOZASA
 
-  $username = 'BAPOr';
-  $email = 'ikhbh@ljb.vd';
-  $password = 'asdasd';
+  $username = 'Rozsi';
+  $email = 'rozsi@ljb.vd';
+  $password = 'feltorhetetlen';
 
-  postNewClient($username, $email, $password);
+  // postNewClient($username, $email, $password);
+  
+  $kerdes_id = 3;
+  $voter_name = 'Janos';
+  $vote = 'zold';
+  $kerdes = 'Mi a kedvenc eteled?';
 
-  //GET 
+  // record_vote($kerdes_id,$voter_name, $vote, $kerdes);
 
-    //KLIENS LEKERESE ID ALAPJAN
+  $question = 'Mit ittal ma?';
 
-  $id = 1;
+  // postNewQuestion($question);
+  
+  // echo getClientByEmail($email);
 
-  echo getClientById($id);
+  // echo get_vote_by_voter($voter_name);
 
-    //KLIENS LEKERESE EMAIL ALAPJAN
+  // Példa használat
+$questionAnswerPercentages = get_question_answer_percentages();
 
-  $email = 'ikhbh@ljb.vd';
+// Eredmények kiíratása
+foreach ($questionAnswerPercentages as $kerdes => $valaszok) {
+  echo "Kérdés: " . $kerdes . "<br>";
 
-  echo getClientByEmail($email);
+  foreach ($valaszok as $valasz => $szazalek) {
+      echo "Válasz: " . $valasz . "<br>";
+      echo "Százalékos arány: " . $szazalek . "%<br>";
+      echo "<br>";
+  }
+}
 ?>
