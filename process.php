@@ -15,18 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $adress = explode("/", $fromwhere);
     $lastIndex = count($adress) - 1;
 
-    echo $adress[$lastIndex];
+    //echo $adress[$lastIndex];
 
     if (isset($_POST["Login"])) {
         
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
-        $email = $_POST["email"];
         $ipAddress = $_SERVER["REMOTE_ADDR"];
+        $email = $_POST["email"];
         $password = $_POST["password"];
         $emailFound = false;
         $passwordFound = false;
-        echo $email;
-        foreach ($database as $line) {
+        //echo $email;
+        /*foreach ($database as $line) {
             echo $line . "<br>";
             if (!empty(trim($line))) {
                 $data = explode(": ", $line);
@@ -46,8 +46,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             }
         }
+        */
+        $result = getClientByEmail($email);
+        //echo $email . " " . $password . PHP_EOL;
+        //print_r($result);
+        if($result == "Client not found!")
+        {   
+            $emailFound = false;
+            $passwordFound = false;
+        }
+        else{
+            $emailFound = true;
+            if($result['password'] == $password)
+            {
+                $passwordFound = true;
+               
+                
+            }
+            else
+            {
+                
+                $passwordFound = false;
+            }
+        }
 
-        if ($emailFound && $passwordFound) {
+       if ($emailFound && $passwordFound) {
             session_start();
             file_put_contents("error.txt", "");
             //$_SESSION['user_id'] = $loggedInUserId;
@@ -74,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $emailFound = false;
         $passwordFound = false;
 
-        foreach ($database as $line) {
+        /*foreach ($database as $line) {
             //echo $line . "<br>";
             if (!empty(trim($line))) {
                 $data = explode(": ", $line);
@@ -86,8 +109,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
                
             }
+        }*/
+
+        $result = getClientByEmail($email);
+
+        if($result == "Client not found!")
+        {   
+            $emailFound = false;
+            
         }
+        else{
+            $emailFound = true; 
+        }
+        print_r($result);
+        echo $emailFound;
         if (!$emailFound) {
+            
             $data =
                 PHP_EOL .
                 ";;" .
@@ -108,6 +145,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
             $data = PHP_EOL . ";;" . PHP_EOL;
             file_put_contents("login_data.txt", $data, FILE_APPEND | LOCK_EX);
+            
+            postNewClient($_POST['Nev'], $email, $password);
 
             header("Location: registration_form.html");
             exit();
