@@ -1,9 +1,11 @@
 <?php
+include "szavazat.php";
+include "kliens.php";
 echo "Sikerult";
-echo '<pre>';
+/*echo '<pre>';
 print_r($_POST);
 echo '</pre>';
-
+*/
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "<h2>Beérkező adatok:</h2>";
@@ -13,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $adress = explode("/", $fromwhere);
     $lastIndex = count($adress) - 1;
 
-    //echo $adress[$lastIndex];
+    echo $adress[$lastIndex];
 
     if (isset($_POST["Login"])) {
         
@@ -134,15 +136,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: registration_form.html");
         exit();
     } elseif ($adress[$lastIndex] == "form.php") {
+        session_start();
         echo "Form";
 
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        
+        //echo $_SESSION['username'];
+        
+        $result = getClientByEmail($_SESSION['username']);
+        
+        echo '<pre>';
+        print_r($result);
+        echo '</pre>';
+        
+        record_vote($_POST['question_id'],$result['username'],$_POST['answer'],$_POST['question']);
+
         $data = PHP_EOL . "IP" . ": " . $_SERVER["REMOTE_ADDR"] . PHP_EOL;
-        file_put_contents("data.txt", $data, FILE_APPEND | LOCK_EX);
+        file_put_contents("question_answer.txt", $data, FILE_APPEND | LOCK_EX);
 
         foreach ($_POST as $key => $value) {
             //echo "<p><strong>{$key}:</strong> {$value}</p>";
             $data = PHP_EOL . $key . ": " . $value . PHP_EOL;
-            file_put_contents("data.txt", $data, FILE_APPEND | LOCK_EX);
+            file_put_contents("question_answer.txt", $data, FILE_APPEND | LOCK_EX);
+        }
+
+        header("Location: form.php");
+        exit();
+    }
+    elseif ($adress[$lastIndex] == "votecreate.php") {
+        echo "Create vote";
+
+        $data = PHP_EOL . "IP" . ": " . $_SERVER["REMOTE_ADDR"] . PHP_EOL;
+        file_put_contents("questions.txt", $data, FILE_APPEND | LOCK_EX);
+
+        foreach ($_POST as $key => $value) {
+            //echo "<p><strong>{$key}:</strong> {$value}</p>";
+            $data = PHP_EOL . $key . ": " . $value . PHP_EOL;
+            file_put_contents("questions.txt", $data, FILE_APPEND | LOCK_EX);
+            recordQuestion($value);
         }
 
         header("Location: form.php");

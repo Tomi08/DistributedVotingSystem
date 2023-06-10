@@ -12,7 +12,7 @@ if ($inipath) {
 }
 */
 
-$curl = curl_init();
+/*$curl = curl_init();
 
 $url = "http://database/get-questions";
 
@@ -23,11 +23,13 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
-include "szavazat.php";
+
 
 $questions1 = json_decode($response, true);
-
+*/
 //echo 'Lekert kerdesek' . $questions1 . '<br><br>';
+
+include "szavazat.php";
 $questions = getQuestion();
 
 // $questions = array(
@@ -62,7 +64,9 @@ $questions = getQuestion();
     echo '<div id="formdiv">';
     echo '<form action="process.php" method="POST">';
     echo '<label for="name">' . $question['kerdes'] . '</label><br><br>';
-    echo '<input type="varchar">';
+    echo '<input type="hidden" name="question" value="' . $question['kerdes'] . '">';
+    echo '<input type="hidden" name="question_id" value="' . $question['kerdes_id'] . '">';
+    echo '<input type="text" name="answer">';
    
     echo '<button type="submit">Küldés</button>';
     echo '<br></form>';

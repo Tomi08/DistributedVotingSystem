@@ -82,7 +82,7 @@ if (!function_exists('getQuestion')) {
 function getQuestion(){
     $conn = GetCon();
 
-    $sql = "SELECT kerdes FROM kerdesek";
+    $sql = "SELECT kerdes, kerdes_id FROM kerdesek";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -95,6 +95,23 @@ function getQuestion(){
 
     // CloseCon($conn);
     return $ret;
+}
+
+}
+if (!function_exists('recordQuestion')) {
+
+function recordQuestion($kerdes){
+    $conn = GetCon();
+
+
+    $sql = "INSERT INTO kerdesek (kerdes ) VALUES ('$kerdes')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Vote created successfully". PHP_EOL;
+        
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error . PHP_EOL;
+    }
 }
 
 }

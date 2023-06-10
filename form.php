@@ -51,7 +51,6 @@
     <h2>Kérdőív</h2>
     <?php
     session_start();
-    
     // echo $_SESSION['username'];
     
     if(!isset($_SESSION['username']))
