@@ -59,24 +59,23 @@ function rblurHandler(e) {
             this.setCustomValidity('');
         }
     }
-    if(this.id == "fin1")
-    {
+    if (this.id == "fin1") {
         let re = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
-    if (!re.test(this.value)) {
-        this.setCustomValidity('Helytelen e-mail cím');
-        this.reportValidity();
-    }
-    else {
-        this.setCustomValidity('');
-    }
+        if (!re.test(this.value)) {
+            this.setCustomValidity('Helytelen e-mail cím');
+            this.reportValidity();
+        }
+        else {
+            this.setCustomValidity('');
+        }
     }
 
-    
+
 
 }
 //keyup
 function rkeyUpHandler(e) {
- 
+
     if (this.id == "rin9") {
         var email = document.getElementById("in8");
         if (this.value != email.value) {
@@ -138,7 +137,7 @@ window.onload = function () {
         input.addEventListener("blur", rblurHandler, true);
     })
 
-       fetch('error.txt')
+    /*fetch('error.txt')
         .then(function (response) {
             if (response.ok) {
                 return response.text();
@@ -147,13 +146,15 @@ window.onload = function () {
             }
         })
         .then(function (data) {
-            
+
             error.textContent = data;
+            console.log(data);
         })
         .catch(function (error) {
             console.log(error);
         });
-        
+
+        */
 
 
 

@@ -32,6 +32,10 @@
         li a:hover {
             background-color: #111;
         }
+        p { 
+            
+            color: green;
+        }
     </style
 </head>
 <body>
@@ -58,11 +62,11 @@
         header("Location: registration_form.html");
         exit();
     }
-    
+   
     if (isset($_SESSION["errors"])) {
-        foreach ($_SESSION["errors"] as $error) {
-            echo "<p>$error</p>";
-        }
+        
+            echo '<p>' . $_SESSION["errors"] . '</p>';
+        
         unset($_SESSION["errors"]);
     }
     ?>

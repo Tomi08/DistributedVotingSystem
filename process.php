@@ -78,13 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: form.php");
             exit();
         } elseif (!$emailFound) {
-            $error = "Hibás felhasználónév";
+            $error = "Hibás felhasználónév" . PHP_EOL . ";;" . PHP_EOL;
         } elseif (!$passwordFound) {
-            $error = "Hibás jelszó";
+            $error = "Hibás jelszó" . PHP_EOL . ";;" . PHP_EOL;
         } else {
-            $error = "Hibás felhasználónév vagy jelszó!";
+            $error = "Hibás felhasználónév vagy jelszó!" . PHP_EOL . ";;" . PHP_EOL;
         }
-
+        
         file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
         header("Location: registration_form.html");
     } elseif (isset($_POST["Register"])) {
@@ -147,10 +147,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             file_put_contents("login_data.txt", $data, FILE_APPEND | LOCK_EX);
             
             postNewClient($_POST['Nev'], $email, $password);
-
+            $error = "Sikeres Regisztracio". PHP_EOL . ";;" . PHP_EOL;
+            file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
             header("Location: registration_form.html");
             exit();
         } else {
+            $error = "Sikertelen regisztráció, az adott felhasználó létezik már a rendszerben". PHP_EOL . ";;" . PHP_EOL;
+            file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
             header("Location: registration_form.html");
             exit();
         }
@@ -164,8 +167,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          http://localhost:80/reset_password_form.html";
         $sender = "osztottprojekt@gmail.com";
         if (mail($receiver, $subject, $body, $sender)) {
+            $error = "Az e-mail sikeresen elküldve.". PHP_EOL;
+            file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
             echo "Az e-mail sikeresen elküldve.";
         } else {
+            $error = "Hiba történt az e-mail küldésekor." . PHP_EOL;
+            file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
             echo "Hiba történt az e-mail küldésekor.";
         }
 
@@ -200,11 +207,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = PHP_EOL . $key . ": " . $value . PHP_EOL;
             file_put_contents("question_answer.txt", $data, FILE_APPEND | LOCK_EX);
         }
-
+        $_SESSION['errors'] = "Válasza sikeresen rögzítve lett";
         header("Location: form.php");
         exit();
     }
     elseif ($adress[$lastIndex] == "votecreate.php") {
+        session_start();
         echo "Create vote";
 
         $data = PHP_EOL . "IP" . ": " . $_SERVER["REMOTE_ADDR"] . PHP_EOL;
@@ -216,17 +224,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             file_put_contents("questions.txt", $data, FILE_APPEND | LOCK_EX);
             recordQuestion($value);
         }
-
+        $_SESSION['errors'] = "Sikeresen létre hozott egy új kérdést";
+        echo $_SESSION['errors'];
         header("Location: form.php");
         exit();
     }
 }
 
-if (!empty($errors)) {
+/*if (!empty($errors)) {
     // Továbbítás az űrlapra és hibaüzenetek megjelenítése
     session_start();
     $_SESSION["errors"] = $errors;
     //header("Location: form.php");
     //exit();
-}
+}*/
 ?>

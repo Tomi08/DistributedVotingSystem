@@ -1,0 +1,308 @@
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+IP: ::1
+
+answer: 18
+
+IP: ::1
+
+answer: 18
+
+question: Hany eves vagy?
+
+IP: ::1
+
+answer: Koszi jol
+
+question: Anyad hogy van?
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: 18
+
+IP: ::1
+
+question: Mit ittal ma?
+
+answer: vizet
+
+IP: ::1
+
+question: Hogy erzed magad
+
+answer: szarul de buszken
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+answer: kozod
+
+IP: ::1
+
+question: Mit ittal ma?
+
+answer: vizet
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: 18
+
+IP: ::1
+
+question: Hogy erzed magad
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Hany eves vagy?
+
+answer: Koszi jol
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Anyad hogy van?
+
+question_id: 4
+
+answer: koszi jol
+
+IP: ::1
+
+question: Anyad hogy van?
+
+question_id: 4
+
+answer: igen
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 17
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 22
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Mit szeretsz jobban a diot vag
+
+question_id: 5
+
+answer: diot
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
+
+IP: ::1
+
+question: Hogy erzed magad ma?
+
+question_id: 8
+
+answer: igen
+
+IP: ::1
+
+question: Hany eves vagy?
+
+question_id: 1
+
+answer: 18
