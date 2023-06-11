@@ -158,6 +158,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit();
         }
     } elseif (isset($_POST["Send"])) {
+        session_start();
+        $_SESSION['email']=$_POST["email"];
+
         echo "Forgot Password";
         $to = $_POST["email"];
         $receiver = $_POST["email"];
@@ -179,6 +182,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: registration_form.html");
         exit();
     } elseif ($adress[$lastIndex] == "reset_password_form.html") {
+        session_start();
+        if (isset($_SESSION["errors"])) {
+        echo $_SESSION['email'];
+        updatekliens($_SESSION['email'],$_POST['password']);
+        }
         header("Location: registration_form.html");
         exit();
     } elseif ($adress[$lastIndex] == "form.php") {
