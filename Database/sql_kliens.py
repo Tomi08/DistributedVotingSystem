@@ -37,7 +37,7 @@ def sql_record_vote(voter_name, vote):
 def sql_get_vote_by_voter(voter_name):
     conn = sql_open_con()
 
-    sql = "SELECT szavazoNeve, szavazat FROM szavazatok WHERE szavazoNeve = %s"
+    sql = "SELECT szavazoNeve, valasz FROM szavazatok WHERE szavazoNeve = %s"
     values = (voter_name,)
 
     try:
