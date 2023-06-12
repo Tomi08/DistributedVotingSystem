@@ -34,11 +34,11 @@ def sql_record_vote(voter_name, vote):
 
     sql_close_con(conn)
 
-def sql_get_vote_by_voter(voter_name):
+def sql_get_vote_by_voter(voter_name, question_id):
     conn = sql_open_con()
 
-    sql = "SELECT szavazoNeve, valasz FROM szavazatok WHERE szavazoNeve = %s"
-    values = (voter_name,)
+    sql = "SELECT szavazoNeve, valasz FROM szavazatok WHERE szavazoNeve = %s AND kerdes_id = %s"
+    values = (voter_name, question_id, )
 
     try:
         cursor = conn.cursor()
@@ -46,7 +46,7 @@ def sql_get_vote_by_voter(voter_name):
         result = cursor.fetchone()
 
         if result:
-            return f"Szavazo: {result[0]}, Szavazat: {result[1]}"
+            return f"{result[0]}@{result[1]}"
         else:
             return "No vote found for the specified voter."
     except Exception as e:
