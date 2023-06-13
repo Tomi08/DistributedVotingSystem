@@ -7,20 +7,24 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    print("In index")
     error = None
     if request.method == 'POST':
+        print("POST");
         fromwhere = request.headers.get('Referer')
         adress = fromwhere.split('/')
         last_index = len(adress) - 1
 
         if 'Login' in request.form:
+            print("LOGIN");
             email = request.form['email']
-            ip_address = request.remote_addr
+
             password = request.form['password']
             email_found = False
             password_found = False
 
             with open("login_data.txt", "r") as file:
+                print(email,password);
                 for line in file:
                     if line.strip():
                         data = line.split(': ')
@@ -35,6 +39,7 @@ def index():
                 with open("error.txt", "w") as file:
                     file.write("")
                 # Perform the necessary actions for successful login
+
                 return redirect("form.php")
             elif not email_found:
                 error = "Hibás felhasználónév"
@@ -95,7 +100,7 @@ def index():
 
 
 def execute_php_code(php_code, data):
-    print(data)
+    # print(data)
     # Run the PHP code as a subprocess and capture the output
     php_process = subprocess.Popen(['php', php_code], stdout=subprocess.PIPE)
     php_output, _ = php_process.communicate()
@@ -108,7 +113,8 @@ def form():
     error = None
     if request.method == 'POST':
         # Get the form data
-        print(request.form)
+        # print(request.form)
+        print("Hello")
         data = {
             # 'email': request.form['email'],
             # 'password': request.form['password'],
@@ -116,7 +122,7 @@ def form():
             # 'Register': request.form.get('Register'),
             # 'Send': request.form.get('Send')
         }
-        output = execute_php_code('form.php',data)
+        output = execute_php_code('form.php', data)
 
     return output
 
