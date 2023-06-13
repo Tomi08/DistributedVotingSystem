@@ -159,3 +159,54 @@ Elfogadta_a_feltetel: Igen
 Register: Register
 
 ;;
+
+;;
+IP: ::1
+
+Nev: Kis Kalman
+
+email: kalman@gmail.com
+
+password: Kalman123
+
+re-password: Kalman123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+Nev: Kis Kalman Rozalia
+
+email: kalman1@gmail.com
+
+password: Cirmos123
+
+re-password: Cirmos123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+Nev: Iszlai Tamas
+
+email: iszlai3@gmail.com
+
+password: Micimacko123
+
+re-password: Micimacko123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;

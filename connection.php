@@ -5,10 +5,10 @@ function GetCon() {
 
     // Check if the connection is already established
     if (!$conn) {
-        $dbhost = "192.168.1.162";
-        $dbuser = "aporka";
+        $dbhost = "192.168.0.179";
+        $dbuser = "osztott";
         $dbpass = "nehezjelszo";
-        $db = "aporka";
+        $db = "osztott";
         $conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
     
         // Check connection

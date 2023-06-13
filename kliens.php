@@ -51,7 +51,8 @@ function getClientByEmail($email){
     
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $ret = "id: " . $row["id"]. " - username: " . $row["username"]. " - email: " . $row["email"] . " - password: " . $row["password"] . "<br>";
+        $ret = $row;
+        //$ret = "id: " . $row["id"]. " - username: " . $row["username"]. " - email: " . $row["email"] . " - password: " . $row["password"] . "<br>";
     } else {
         $ret = "Client not found!";
     }

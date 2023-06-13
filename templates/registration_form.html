@@ -4,12 +4,12 @@
 <head>
     <title>Regisztrációs Űrlap</title>
     <meta charset="utf-8">
-    <script src='static/utils.js'></script>
-    <script src="./static/registration_form.js"></script>
+    <script src='utils.js'></script>
+    <script src="./registration_form.js"></script>
     <!-- <script src="./login_form.js"></script> -->
     <!--<script src="./forgot_password_form.js "></script> -->
-    <link href="./static/registration_form_style.css" rel="stylesheet" type="text/css">
-    
+    <link href="registration_form_style.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -68,11 +68,11 @@
             </div>
         </div> -->
         <div>
-            <img src="static/voting-header2.png" id="logo">
+            <img src="voting-header2.png" id="logo">
         </div>
         <div class="form-container">
             <div class="elsok">
-                <form id="elso" action="register" method="POST">
+                <form id="elso" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Regisztrációs adatok</legend>
                         <label for="rin1">Teljes név:</label>
@@ -92,7 +92,7 @@
                         <input class="stylized " id="rin11" type="password" name="re-password" value="" size="50"
                             maxlength="55" placeholder="re-password" required>
                         <br><br>
-                        <label class="switch">Feltételek elfogadása2
+                        <label class="switch">Feltételek elfogadása
                             <input id="feltetel" type="checkbox" name="Elfogadta a feltetel" value="Igen" required>
                             <span class="slider"></span>
                         </label>
@@ -103,7 +103,7 @@
                 </form>
             </div>
             <div class="elsok">
-                <form id="elso_" action="form.php" method="POST">
+                <form id="elso_" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Bejelentkezés:</legend>
                         <!-- <p id='error' style="color: red;">
@@ -111,35 +111,35 @@
         </p> -->
                         <label for="in1">E-mail:</label>
                         <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
-                            placeholder="e-mail"  required>
+                            placeholder="e-mail" required>
                         <input class="stylized " style="display: none;" id="in2" type="password" name="password"
                             value="" size="55" maxlength="20" placeholder="password">
                         <!--<label for="in2">Jelszó:</label>
                         <input class="stylized " id="in2" type="password" name="password" value="" size="50"
                             maxlength="55" placeholder="password" required>-->
-                        <!-- <a href="registration_form.html">
+                        <a href="registration_form.html">
                             <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
-                        </a> -->
+                        </a>
                         <a href="forgot_password_form.html">
                             <p style="font-size: smaller;">Elfelejtett jelszo</p>
                         </a>
                         <input type="submit" name="Login" value="Login">
                         <input type="reset" name="Reset" value="Reset">
                         <input type="reset" name="Reset" value="Reset">
-                        <img src="static/cat.png" id="profpic">
+                        <img src="cat.png" id="profpic">
                     </fieldset>
                 </form>
             </div>
         </div>
         <div class="masodik">
-            <form id="masodik" action="templates/registration_form" method="POST">
+            <form id="masodik" action="process.php" method="POST">
                 <fieldset style="width: 1032px; height: auto;">
                     <legend>Jelszó helyreállítása</legend>
 
 
                     <label for="fin8">Email:</label>
                     <input class="stylized " id="fin1" type="text" name="email" value="" size="50" maxlength="55"
-                        placeholder="e-mail" required >
+                        placeholder="e-mail" required>
 
 
                     <input type="submit" name="Send" value="Send">
@@ -149,7 +149,43 @@
 
             </form>
         </div>
-        <p id='error' style="color: red;">
+        <p id='error' style="color: red;"> </p>
+
+        <script>
+            fetch('error.txt')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error('Error occurred while fetching the file.');
+                    }
+                })
+                .then(function (data) {
+                    if (data.length != 0) {
+                        var fileContent = document.getElementById('error');
+                        //console.log(data);
+                        var lines = data.split(";;");
+                        var lastError = lines[lines.length - 2].trim();
+                        fileContent.textContent = lastError;
+                        console.log(lines.length, lines);
+                        return fetch('clear_file.php', { method: 'POST' });
+                    }
+
+                })
+                .then(function (response) {
+                    if (response.ok) {
+                        console.log('File contents cleared successfully.');
+                    } else {
+                        throw new Error('Error occurred while clearing the file.');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+        </script>
+
     </div>
 </body>
 
