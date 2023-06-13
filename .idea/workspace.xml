@@ -5,13 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b63947c9-5163-4c8f-946d-263ae821db4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schema.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/background3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup1css.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitnami.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doggo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forgot_password_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forgot_password_form.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/form_generator.php" beforeDir="false" afterPath="$PROJECT_DIR$/form_generator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/post_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process.php" beforeDir="false" afterPath="$PROJECT_DIR$/process.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/registration_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration_form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration_form_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reset_password_form .js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reset_password_form.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spacecat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spacecat2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/votecreate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-header.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voting-header2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +78,8 @@
       <workItem from="1685952928053" duration="1034000" />
       <workItem from="1685958046255" duration="38000" />
       <workItem from="1686147464443" duration="1079000" />
+      <workItem from="1686403526520" duration="21000" />
+      <workItem from="1686405140966" duration="1043000" />
     </task>
     <servers />
   </component>
@@ -64,5 +88,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/OsztottProjekt$OsztottProjekt.coverage" NAME="OsztottProjekt Coverage Results" MODIFIED="1685897914989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/OsztottProjekt$app.coverage" NAME="app Coverage Results" MODIFIED="1686405299813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
