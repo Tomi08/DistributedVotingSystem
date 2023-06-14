@@ -1,5 +1,3 @@
-
-
 IP: 5.15.18.155
 
 Nev: Kis Kalman
@@ -25,8 +23,7 @@ Nem: Ferfi
 Elfogadta_a_feltetel: Igen
 
 Register: Register
-
-
+;;
 IP: 5.15.18.155
 
 Nev: Kis Kalman Rozalia
@@ -52,10 +49,10 @@ Nem: Ferfi
 Elfogadta_a_feltetel: Igen
 
 Register: Register
+;;
+email: asd1@gmail.com
 
 Nev: Kis Kalman
-
-email: asd1@gmail.com
 
 re-email: asd1@gmail.com
 
@@ -76,3 +73,140 @@ Nem: No
 Elfogadta_a_feltetel: Igen
 
 Register: Register
+;;
+email: kalman@gmail.com
+
+Nev: Kis Kalman Rozalia
+
+password: Kalman123
+
+re-password: Kalman123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+;;
+
+email: kis@gmail.com
+
+Nev: Kis Kalman Rozaliaka
+
+password: Julcsi123
+
+re-password: Julcsi123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+email: alma@pelda.ro
+
+Nev: Alma Janos
+
+password: Almacska1233
+
+re-password: Almacska1233
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+;;
+
+email: iszlai9@gmail.com
+
+Nev: Iszlai Tamas
+
+password: Nilus123
+
+re-password: Nilus123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+;;
+;;
+IP: ::1
+
+Nev: Kis Kalman
+
+email: kalman12@gmail.com
+
+password: Kalman123
+
+re-password: Kalman123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+email: alma2@gmail.com
+
+Nev: Kuplung Macska
+
+password: Alma12345
+
+re-password: Alma12345
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+Nev: Kis Kalman
+
+email: kalman@gmail.com
+
+password: Kalman123
+
+re-password: Kalman123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+Nev: Kis Kalman Rozalia
+
+email: kalman1@gmail.com
+
+password: Cirmos123
+
+re-password: Cirmos123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;
+
+;;
+IP: ::1
+
+Nev: Iszlai Tamas
+
+email: iszlai3@gmail.com
+
+password: Micimacko123
+
+re-password: Micimacko123
+
+Elfogadta_a_feltetel: Igen
+
+Register: Register
+
+;;

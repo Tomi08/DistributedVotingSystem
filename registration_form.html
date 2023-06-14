@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <script src='utils.js'></script>
     <script src="./registration_form.js"></script>
-    <script src="login_form.js"></script>
+    <!-- <script src="./login_form.js"></script> -->
+    <!--<script src="./forgot_password_form.js "></script> -->
     <link href="registration_form_style.css" rel="stylesheet" type="text/css">
-    
+
 
 </head>
 
@@ -74,21 +75,21 @@
                 <form id="elso" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Regisztrációs adatok</legend>
-                        <label for="in1">Teljes név:</label>
-                        <input class="stylized " id="in1" type="text" name="Nev" value="" size="50" maxlength="55"
-                            placeholder="Vezeteknev,szemelynev" autofocus required
+                        <label for="rin1">Teljes név:</label>
+                        <input class="stylized " id="rin1" type="text" name="Nev" value="" size="50" maxlength="55"
+                            placeholder="Vezeteknev,szemelynev" required
                             pattern="(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
                             title="Teljes nev minta: Példa Dezso Peter">
 
-                        <label for="in8">Email:</label>
-                        <input class="stylized " id="in8" type="text" name="email" value="" size="50" maxlength="55"
+                        <label for="rin8">Email:</label>
+                        <input class="stylized " id="rin8" type="text" name="email" value="" size="50" maxlength="55"
                             placeholder="e-mail" required>
 
-                        <label for="in10">Jelszó:</label>
-                        <input class="stylized " id="in10" type="password" name="password" value="" size="50"
+                        <label for="rin10">Jelszó:</label>
+                        <input class="stylized " id="rin10" type="password" name="password" value="" size="50"
                             maxlength="55" placeholder="password" required>
 
-                        <input class="stylized " id="in11" type="password" name="re-password" value="" size="50"
+                        <input class="stylized " id="rin11" type="password" name="re-password" value="" size="50"
                             maxlength="55" placeholder="re-password" required>
                         <br><br>
                         <label class="switch">Feltételek elfogadása
@@ -102,7 +103,7 @@
                 </form>
             </div>
             <div class="elsok">
-                <form id="elso" action="process.php" method="POST">
+                <form id="elso_" action="process.php" method="POST">
                     <fieldset style="width: 500px; height: 500px;">
                         <legend>Bejelentkezés:</legend>
                         <!-- <p id='error' style="color: red;">
@@ -110,12 +111,12 @@
         </p> -->
                         <label for="in1">E-mail:</label>
                         <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
-                            placeholder="e-mail" autofocus required>
+                            placeholder="e-mail" required>
                         <input class="stylized " style="display: none;" id="in2" type="password" name="password"
                             value="" size="55" maxlength="20" placeholder="password">
-                        <label for="in10">Jelszó:</label>
-                        <input class="stylized " id="in10" type="password" name="password" value="" size="50"
-                            maxlength="55" placeholder="password" required>
+                        <!--<label for="in2">Jelszó:</label>
+                        <input class="stylized " id="in2" type="password" name="password" value="" size="50"
+                            maxlength="55" placeholder="password" required>-->
                         <a href="registration_form.html">
                             <p style="font-size: smaller;">Nincs fiókja ide kattintva készíthet egyet</p>
                         </a>
@@ -136,9 +137,9 @@
                     <legend>Jelszó helyreállítása</legend>
 
 
-                    <label for="in8">Email:</label>
-                    <input class="stylized " id="in1" type="text" name="email" value="" size="50" maxlength="55"
-                        placeholder="e-mail" required autofocus>
+                    <label for="fin8">Email:</label>
+                    <input class="stylized " id="fin1" type="text" name="email" value="" size="50" maxlength="55"
+                        placeholder="e-mail" required>
 
 
                     <input type="submit" name="Send" value="Send">
@@ -148,6 +149,42 @@
 
             </form>
         </div>
+        <p id='error' style="color: red;"> </p>
+
+        <script>
+            fetch('error.txt')
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error('Error occurred while fetching the file.');
+                    }
+                })
+                .then(function (data) {
+                    if (data.length != 0) {
+                        var fileContent = document.getElementById('error');
+                        //console.log(data);
+                        var lines = data.split(";;");
+                        var lastError = lines[lines.length - 2].trim();
+                        fileContent.textContent = lastError;
+                        console.log(lines.length, lines);
+                        return fetch('clear_file.php', { method: 'POST' });
+                    }
+
+                })
+                .then(function (response) {
+                    if (response.ok) {
+                        console.log('File contents cleared successfully.');
+                    } else {
+                        throw new Error('Error occurred while clearing the file.');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+        </script>
 
     </div>
 </body>
