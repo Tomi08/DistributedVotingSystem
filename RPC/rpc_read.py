@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, request
 from jsonrpcserver import method
 import socket
@@ -38,11 +39,16 @@ def close_socket(client_socket):
     print("Socket Closed!")
     time.sleep(0.2)
 
+def get_current_time():
+    current_time = datetime.now().time()
+    formatted_time = current_time.strftime("%H:%M:%S")
+    return formatted_time
+
 @app.route('/kijelzo/update', methods=['GET'])
 def update():
     nev = request.args.get('nev')
     szavazat = request.args.get('szavazat')
-    message = nev + '@#$%' + szavazat + '@#$%' + 'time'
+    message = nev + '@#$%' + szavazat + '@#$%' + get_current_time()
     my_socket = create_socket_object()
     connect(my_socket)
     send_message(my_socket, message)
