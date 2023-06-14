@@ -19,6 +19,8 @@ class MyFrame(wx.Frame):
                            "In the box below will be displayed the name and the vote sent by you!\n" \
                            "You will have some options to choose from."
 
+        self.question = ""
+
         self.my_display_votes = None
         self.my_display_quest = None
 
@@ -101,6 +103,8 @@ class MyFrame(wx.Frame):
             self.Close()
             with open("../votes.txt", "w") as file:
                 file.truncate()
+            with open("../votes.txt", "w") as file:
+                file.truncate()
 
     def OnResetButtonPress(self, event):
         if event:
@@ -108,6 +112,8 @@ class MyFrame(wx.Frame):
             self.start_button.Show()
             self.reset_button.Hide()
             with open("../votes.txt", "w") as file:
+                file.truncate()
+            with open("../question.txt", "w") as file:
                 file.truncate()
 
     def OnStartButtonPress(self, event):
@@ -130,11 +136,19 @@ class MyFrame(wx.Frame):
                 vote_summary = "".join(lines)
                 wx.CallAfter(self.update_ui_with_votes, vote_summary)
                 portalocker.unlock(file)
+            with open("../question.txt", "r+") as file:
+                portalocker.lock(file, portalocker.LOCK_SH)
+                question = file.readline()
+                wx.CallAfter(self.update_ui_with_question, question)
+                portalocker.unlock(file)
             time.sleep(1)
 
     def update_ui_with_votes(self, vote_summary):
         self.my_display_votes.SetValue(vote_summary)
         self.my_display_votes.SetInsertionPointEnd()
+
+    def update_ui_with_question(self, question):
+        self.my_display_quest.SetValue(question)
 
 
 def ui():

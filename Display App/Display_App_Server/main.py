@@ -30,10 +30,18 @@ def write_vote_to_file(name, vote, sys_time):
         portalocker.unlock(file)
 
 
+def write_question(question):
+    with open("../question.txt", "a+") as file:
+        portalocker.lock(file, portalocker.LOCK_EX)
+        file.write(question + "\n")
+        portalocker.unlock(file)
+
+
 def client_handler(client_socket):
     message = client_socket.recv(1024).decode()
-    name, vote, sys_time = map(str, message.split('@#$%'))
+    question, name, vote, sys_time = map(str, message.split('@#$%'))
     time.sleep(0.1)
+    write_question(question)
     write_vote_to_file(name, vote, sys_time)
 
 

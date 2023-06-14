@@ -39,10 +39,11 @@ def close_socket(client_socket):
 
 
 def create_message():
+    question = "Question"
     name = "Name"
     vote = "Vote"
     sys_time = get_current_time()
-    my_message = name + "@#$%" + vote + "@#$%" + sys_time
+    my_message = question + "@#$%" + name + "@#$%" + vote + "@#$%" + sys_time
     return my_message
 
 
