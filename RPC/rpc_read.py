@@ -1,10 +1,10 @@
-from datetime import datetime
 from flask import Flask, request
 from jsonrpcserver import method
 import socket
 import time
+from datetime import datetime
 import sys
-sys.path.append('./Database/')
+sys.path.append('./Database/py')
 import sql_kliens
 
 app = Flask(__name__)
@@ -46,9 +46,11 @@ def get_current_time():
 
 @app.route('/kijelzo/update', methods=['GET'])
 def update():
+    kerdes = request.args.get('kerdes')
     nev = request.args.get('nev')
     szavazat = request.args.get('szavazat')
-    message = nev + '@#$%' + szavazat + '@#$%' + get_current_time()
+    sys_time = get_current_time()
+    message = kerdes +'@#$%' + nev + '@#$%' + szavazat + '@#$%' + sys_time
     my_socket = create_socket_object()
     connect(my_socket)
     send_message(my_socket, message)

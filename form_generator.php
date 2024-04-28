@@ -11,10 +11,11 @@ if ($inipath) {
     
 }
 */
+//session_start();
 
-/*$curl = curl_init();
-
-$url = "http://database/get-questions";
+$curl = curl_init();
+echo $_SESSION['db_key'];
+$url = "http://192.168.0.179:5001/db/getQuestion?key=".$_SESSION['db_key'];
 
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -23,14 +24,15 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
+//print_r($response);
 
 
-$questions1 = json_decode($response, true);
-*/
+//$questions1 = json_decode($response, true);
+
 //echo 'Lekert kerdesek' . $questions1 . '<br><br>';
+include "kerdes.php";
 
-include "szavazat.php";
-$questions = getQuestion();
+$questions = getQuestion($_SESSION['db_key']);
 
 // $questions = array(
 //   array(
@@ -61,6 +63,7 @@ $questions = getQuestion();
 // );
 
   foreach ($questions as $question) {
+    //echo $response;
     echo '<div id="formdiv">';
     echo '<form action="process.php" method="POST">';
     echo '<label for="name">' . $question['kerdes'] . '</label><br><br>';

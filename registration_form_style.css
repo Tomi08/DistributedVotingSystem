@@ -6,8 +6,8 @@ form {
 
 body {
     background-color: rgba(42, 42, 42, 0.192);
-    background-image: url('background3.jpg');
-    background: url("background3.jpg") no-repeat center center fixed;
+    background-image: url('./img/background3.jpg');
+    background: url("./img/background3.jpg") no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;

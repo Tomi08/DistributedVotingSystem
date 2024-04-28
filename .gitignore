@@ -1,0 +1,39 @@
+# Ignore IDE directories
+.idea/
+.vscode/
+dashboard/
+vendor/
+applications.html
+login_data.txt
+bitnami.css
+Database/py/__pycache__
+Display App/.idea
+Display App/Display_App_Server/.idea
+Display App/Socket_client/.idea
+
+# Ignore compiled binaries and build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.txt
+composer.lock
+utils.js
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+
+# Ignore user-specific files
+.DS_Store
+Thumbs.db

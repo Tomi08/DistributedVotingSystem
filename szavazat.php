@@ -5,10 +5,10 @@
 include "connection.php";
 //POST
 //UJ SZAVAZAT LETREHOZASA
-if (!function_exists('record_vote')) {
-function record_vote($kerdes_id,$voter_name, $vote, $kerdes){
-    $conn = GetCon();
-
+if (!function_exists('record_vote')){
+function record_vote($kerdes_id,$voter_name, $vote, $kerdes,$key){
+    $conn = GetCon($key);
+    if ($key === "sql") {
     $sql = "INSERT INTO szavazatok (kerdes_id,szavazoNeve, valasz,kerdes ) VALUES ('$kerdes_id', '$voter_name', '$vote','$kerdes')";
 
     if ($conn->query($sql) === TRUE) {
@@ -19,14 +19,38 @@ function record_vote($kerdes_id,$voter_name, $vote, $kerdes){
     }
 
     // Close_con($conn);
-} 
 }
+elseif ($key === "mongodb") {
+    $mongoDB = $conn->selectCollection("szavazatok");
+
+    $document = array(
+        "kerdes_id" => $kerdes_id,
+        "szavazoNeve" => $voter_name,
+        "valasz" => $vote,
+        "kerdes" => $kerdes
+    );
+
+    try {
+        $result = $mongoDB->insertOne($document); // Insert into MongoDB
+
+        if ($result->getInsertedCount() > 0) {
+            echo "Vote created successfully" . PHP_EOL;
+        } else {
+            echo "Error creating vote" . PHP_EOL;
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage() . PHP_EOL;
+    }
+}
+}
+}
+
 //GET
 //SZAVAZAT LEKERESE SZAVAZO NEVE ALAPJAN
-if (!function_exists('get_vote_by_voter')) {
-function get_vote_by_voter($voter_name){
-    $conn = GetCon();
-
+if (!function_exists('get_vote_by_voter')){
+function get_vote_by_voter($voter_name,$key){
+    $conn = GetCon($key);
+    if ($key === "sql") {
     $sql = "SELECT szavazoNeve, szavazat FROM szavazatok WHERE szavazoNeve = $voter_name";
     $result = $conn->query($sql);
 
@@ -36,16 +60,28 @@ function get_vote_by_voter($voter_name){
         return "No vote found for the specified voter.";
     }
 
-    // Close_con($conn);
+}
+elseif ($key === "mongodb") {
+    $mongoDB = $conn->selectCollection("szavazatok");
+
+    $query = array("szavazoNeve" => $voter_name);
+    $result = $mongoDB->findOne($query);
+
+    if ($result) {
+        return "Szavazo: " . $result["szavazoNeve"] . ", Szavazat: " . $result["valasz"];
+    } else {
+        return "No vote found for the specified voter.";
+    }
+}
 }
 }
 
 
 /// Kérdések válaszainak százalékos eloszlásának lekérése
-if (!function_exists('get_question_answer_percentages')) {
-function get_question_answer_percentages() {
-    $conn = GetCon();
-
+if (!function_exists('get_question_answer_percentages')){
+function get_question_answer_percentages($key) {
+    $conn = GetCon($key);
+    if ($key === "sql") {
     $sql = "SELECT kerdes, valasz, (COUNT(*) / (SELECT COUNT(*) FROM szavazatok WHERE kerdes = s.kerdes)) * 100 AS szazalek
             FROM szavazatok s
             GROUP BY kerdes, valasz";
@@ -74,34 +110,84 @@ function get_question_answer_percentages() {
         echo "Error: " . $e->getMessage();
     }
 
-    Close_con($conn);
+}
+elseif ($key === "mongodb") {
+    $mongoDB = $conn->selectCollection("szavazatok");
+
+    $pipeline = array(
+        array(
+            '$group' => array(
+                '_id' => array('kerdes' => '$kerdes', 'valasz' => '$valasz'),
+                'count' => array('$sum' => 1)
+            )
+        ),
+        array(
+            '$group' => array(
+                '_id' => '$_id.kerdes',
+                'valaszok' => array(
+                    '$push' => array(
+                        'valasz' => '$_id.valasz',
+                        'count' => '$count'
+                    )
+                ),
+                'total' => array('$sum' => '$count')
+            )
+        ),
+        array(
+            '$project' => array(
+                '_id' => 0,
+                'kerdes' => '$_id',
+                'valaszok' => 1,
+                'total' => 1
+            )
+        )
+    );
+
+   return $result = $mongoDB->aggregate($pipeline);
+
+    
 }
 }
-if (!function_exists('getQuestion')) {
+}
+if (!function_exists('kiiratas_szazalekos_arany')){
+function kiiratas_szazalekos_arany($result,$key){
+    if ($key === "sql") {
+    foreach ($result as $kerdes => $valaszok) {
+    echo "Kérdés: " . $kerdes . "<br>";
 
-function getQuestion(){
-    $conn = GetCon();
-
-    $sql = "SELECT kerdes, kerdes_id FROM kerdesek";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        // $ret = "kerdes_id: " . $row["kerdes_id"]. " - kerdes: " . $row["kerdes"]. "<br>";
-		$ret = $result;
-    } else {
-        $ret = "Client not found!";
+    foreach ($valaszok as $valasz => $szazalek) {
+        echo "Válasz: " . $valasz . "<br>";
+        echo "Százalékos arány: " . $szazalek . "%<br>";
+        echo "<br>";
     }
-
-    // CloseCon($conn);
-    return $ret;
 }
-
+}elseif ($key === "mongodb") {
+    // Eredmények kiíratása
+    foreach ($result as $doc) {
+    $kerdes = $doc['kerdes'];
+    $valaszok = $doc['valaszok'];
+    $total = $doc['total'];
+    echo "<pre>";
+    echo "Kérdés: $kerdes" . PHP_EOL;
+  
+    foreach ($valaszok as $valasz) {
+        $valaszText = $valasz['valasz'];
+        $count = $valasz['count'];
+        $szazalek = round(($count / $total) * 100,2);
+  
+        echo "Válasz: $valaszText - Százalék: $szazalek%" . PHP_EOL;
+    }
+  
+    echo PHP_EOL;
+    echo "</pre>";
+  }
 }
-if (!function_exists('recordQuestion')) {
-
+}
+}
+if (!function_exists('recordQuestion')){
 function recordQuestion($kerdes){
-    $conn = GetCon();
+    $key = 'sql';
+    $conn = GetCon($key);
 
 
     $sql = "INSERT INTO kerdesek (kerdes ) VALUES ('$kerdes')";
@@ -113,6 +199,6 @@ function recordQuestion($kerdes){
         echo "Error: " . $sql . "<br>" . $conn->error . PHP_EOL;
     }
 }
-
 }
+
 ?>

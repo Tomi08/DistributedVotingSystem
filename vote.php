@@ -54,11 +54,36 @@
     
     <?php
     session_start();
-    
-    $questionAnswerPercentages = get_question_answer_percentages();
+    $key = $_SESSION['db_key'];
+    $questionAnswerPercentages = get_question_answer_percentages($key);
 
     // Eredmények kiíratása
-
+        // Eredmények kiíratása
+        if($key == 'mongodb'){
+        
+            echo '<div class="szavazasok">';
+        foreach ($questionAnswerPercentages as $doc) {
+            $kerdes = $doc['kerdes'];
+            echo '<label>' .  $kerdes . '</label>';
+            $valaszok = $doc['valaszok'];
+            $total = $doc['total'];
+            echo "<pre>";
+            echo "Kérdés: $kerdes" . PHP_EOL;
+          
+            foreach ($valaszok as $valasz) {
+                $valaszText = $valasz['valasz'];
+                $count = $valasz['count'];
+                $szazalek = round(($count / $total) * 100,2);
+          
+                echo "Válasz: $valaszText - Százalék: $szazalek%" . PHP_EOL;
+            }
+          
+            echo PHP_EOL;
+            echo "</pre>";
+        }
+        echo '</div>';
+        }
+        else{
     foreach ($questionAnswerPercentages as $kerdes => $valaszok) {
     
     echo '<div class="szavazasok">';
@@ -72,6 +97,7 @@
     echo '</div>';
     echo '<br><br>';
     } 
+}
     ?>
     </div>
 

@@ -33,6 +33,14 @@
         li a:hover {
             background-color: #111;
         }
+        div.adatok{
+            background-color: rgba(130, 128, 128, 0.775);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 10px;
+            outline: 2px solid rgba(0, 0, 0, 0.644);
+            border-radius: 10px;
+        }
     </style
 </head>
 <body>
@@ -101,12 +109,16 @@
     // Felhasználói adatok kiírása
     
     if (!empty($userData)) {
+        echo "<div class='adatok'>";
         echo "<p>Név: " . $userData['Nev'] . "</p>";
         echo "<p>Email: " . $userData['email'] . "</p>";
         echo "<p>Jelszó: " . $userData['password'] . "</p>";
-        // További adatok kiírása...
+        echo "</div>";
+       
     } else {
+        echo "<div>";
         echo "<p>A felhasználói adatok nem találhatók.</p>";
+        echo "</div>";
     }
     ?>
 
