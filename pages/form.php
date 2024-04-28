@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Kérdőív</title>
-    <link href="form_style.css" rel="stylesheet" type="text/css">
+    <link href="../img/form_style.css" rel="stylesheet" type="text/css">
     <style>
         ul {
             list-style-type: none;

@@ -26,6 +26,7 @@ Display App/Socket_client/.idea
 *.txt
 composer.lock
 utils.js
+styles/backup1css.css
 
 # Ignore logs and temporary files
 *.log

@@ -10,23 +10,22 @@ $function = $input[0];
 if($function == "getclientbyemail"){
     $email = isset($input[1]) ? $input[1] : '';
     $key = isset($input[2]) ? $input[2] : '';
-    
+
     $result = getClientByEmail($email,$key);
-    //echo "jartam itt";
     echo $result;
 }
 
 if($function == "get_vote_by_voter"){
     $voter_name = isset($input[1]) ? $input[1] : '';
     $key = isset($input[2]) ? $input[2] : '';
-    
+
     $result = get_vote_by_voter($voter_name,$key);
 
     echo $result;
 }
 if($function == "getQuestion"){
     $key = isset($input[1]) ? $input[1] : '';
-    
+
     $result = getQuestion($key);
     echo "<pre>";
     print_r($result);
@@ -35,7 +34,7 @@ if($function == "getQuestion"){
 
 if($function == "get_question_answer_percentages"){
     $key = isset($input[1]) ? $input[1] : '';
-    
+
     $result = get_question_answer_percentages($key);
 
     echo kiiratas_szazalekos_arany($result,$key);
@@ -46,7 +45,7 @@ if($function == "postNewClient"){
     $email = isset($input[2]) ? $input[2] : '';
     $password = isset($input[3]) ? $input[3] : '';
     $key = isset($input[4]) ? $input[4] : '';
-    
+
     $result = postNewClient($username,$email,$password,$key);
 
     echo $result;
@@ -56,7 +55,7 @@ if($function == "updatePassword"){
     $email = isset($input[1]) ? $input[1] : '';
     $password = isset($input[2]) ? $input[2] : '';
     $key = isset($input[3]) ? $input[3] : '';
-    
+
     $result = updatePassword($email,$password,$key);
 
     echo $result;
@@ -77,7 +76,7 @@ if($function == "record_vote"){
 if($function == "postNewQuestion"){
     $question = isset($input[1]) ? $input[1] : '';
     $key = isset($input[2]) ? $input[2] : '';
-    
+
     $result = postNewQuestion($question,$key);
 
     echo $result;

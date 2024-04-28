@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //echo $adress[$lastIndex];
 
     if (isset($_POST["Login"])) {
-        
+
         $database = file("login_data.txt", FILE_IGNORE_NEW_LINES);
         $ipAddress = $_SERVER["REMOTE_ADDR"];
         $email = $_POST["email"];
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if(trim($line) === ";;" && $emailFound && !$passwordFound){
                     $foundUser= false;
                     $passwordFound = false;
-                    
+
                 }
                 if ($data[0] === "password" && $data[1] === $password) {
                     echo "<br>Jelszo megtalalva";
@@ -74,7 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //$result='Client not found!';
         //echo $result;
         $curl = curl_init();
-        //$key = 'sql';
         $url = "http://192.168.0.179:5001/db/getclientbyemail?email=".$email."&key=".$key;
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -82,14 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $response = curl_exec($curl);
         curl_close($curl);
-        
+
         $tmp = trim($response);
         echo $tmp;
         if($tmp != "Client not found!"){
-            
+
             $tmp = explode(' - ',$response);
             $result = [];
-    
+
             foreach ($tmp as $line) {
             $parts = explode(':', $line);
             $key_ = trim($parts[0]);
@@ -103,10 +102,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<pre>";
         print_r($result);
         echo "</pre>";
-        //echo $email . " " . $password . PHP_EOL;
-        //print_r($result);
         if($result == "Client not found!")
-        {   
+        {
             $emailFound = false;
             $passwordFound = false;
         }
@@ -114,14 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $emailFound = true;
             echo "<pre>".$result['password'] . "</pre>";
             echo "<pre>".$password . "</pre>";
-            
             if(trim(strip_tags($result['password'])) == trim(strip_tags($password)))
             {
                 $passwordFound = true;
-                echo "jarok erre";
-
-               
-                
             }
             else
             {
@@ -129,8 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $passwordFound = false;
             }
         }
-
-       if ($emailFound && $passwordFound) {
+        if ($emailFound && $passwordFound) {
             session_start();
             file_put_contents("error.txt", "");
             //$_SESSION['user_id'] = $loggedInUserId;
@@ -147,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         session_start();
         $_SESSION['error'] = $error;
         file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
-        header("Location: registration_form.html");
+        header("Location: pages/registration_form.html");
     } elseif (isset($_POST["Register"])) {
         echo "Registration";
 
@@ -168,11 +159,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $emailFound = true;
                     break;
                 }
-               
+
             }
         }*/
         $curl = curl_init();
-        //$key = 'sql';
         $url = "http://192.168.0.179:5001/db/getclientbyemail?email=".$email."&key=".$key;
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -180,14 +170,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $response = curl_exec($curl);
         curl_close($curl);
-        
+
         $tmp = trim($response);
         echo $tmp;
         if($tmp != "Client not found!"){
-            
+
             $tmp = explode(' - ',$response);
             $result = [];
-    
+
             foreach ($tmp as $line) {
             $parts = explode(':', $line);
             $key_ = trim($parts[0]);
@@ -198,20 +188,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         else{
             $result =  "Client not found!";
         }
-        //$result = getClientByEmail($email);
 
         if($result == "Client not found!")
-        {   
+        {
             $emailFound = false;
-            
+
         }
         else{
-            $emailFound = true; 
+            $emailFound = true;
         }
         print_r($result);
         echo $emailFound;
         if (!$emailFound) {
-            
+
             $data =
                 PHP_EOL .
                 ";;" .
@@ -233,7 +222,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = PHP_EOL . ";;" . PHP_EOL;
             file_put_contents("login_data.txt", $data, FILE_APPEND | LOCK_EX);
             $curl = curl_init();
-            //$key = 'sql';
             $name =urlencode($_POST['Nev']);
             $url = "http://192.168.0.179:5001/db/postNewClient?username=".$name."&email=".$email."&password=".$password."&key=".$key;
 
@@ -242,21 +230,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $response = curl_exec($curl);
             curl_close($curl);
-        
-           
-            //postNewClient($_POST['Nev'], $email, $password);
+
             $error = "Sikeres Regisztracio". PHP_EOL . ";;" . PHP_EOL;
             session_start();
             $_SESSION['error'] = $error;
             file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
-            header("Location: registration_form.html");
+            header("Location: pages/registration_form.html");
             exit();
         } else {
             $error = "Sikertelen regisztráció, az adott felhasználó létezik már a rendszerben". PHP_EOL . ";;" . PHP_EOL;
             session_start();
             $_SESSION['error'] = $error;
             file_put_contents("error.txt", $error, FILE_APPEND | LOCK_EX);
-            header("Location: registration_form.html");
+            header("Location: pages/registration_form.html");
             exit();
         }
     } elseif (isset($_POST["Send"])) {
@@ -265,8 +251,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $receiver = $_POST["email"];
         $subject = "Jelszó helyreállítása";
         $body = "Az adott email címre jelszó helyreállítási kérelem történt,
-         amennyiben ön kérvényezte az alábbi linken lévő utasításokkal tudja megváltoztatni a jelszavát
-         http://5.15.42.150:5000/reset_password_form.html";
+        amennyiben ön kérvényezte az alábbi linken lévő utasításokkal tudja megváltoztatni a jelszavát
+        http://5.15.42.150:5000/reset_password_form.html";
         $sender = "osztottprojekt@gmail.com";
         if (mail($receiver, $subject, $body, $sender)) {
             $error = "Az e-mail sikeresen elküldve.". PHP_EOL;
@@ -283,16 +269,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo "Hiba történt az e-mail küldésekor.";
         }
 
-        header("Location: registration_form.html");
+        header("Location: pages/registration_form.html");
         exit();
-    } elseif ($adress[$lastIndex] == "reset_password_form.html") {
+    } elseif ($adress[$lastIndex] == "pages/reset_password_form.html") {
         session_start();
 
         if (isset($_SESSION["email"])) {
         echo $_SESSION['email'] . " " . $_POST['password'];
-        //updatekliens($_SESSION['email'],$_POST['password']);
         $curl = curl_init();
-        //$key = 'sql';
         $url = "http://192.168.0.179:5001/db/updatePassword?email=".$_SESSION['email']."&password=".$_POST['password']."&key=".$key;
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -300,8 +284,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $response = curl_exec($curl);
         curl_close($curl);
-        
-        
+
+
 
         $error = "Jelszó sikeresen helyreállítva";
         $_SESSION['error'] = $error;
@@ -309,20 +293,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         header("Location: registration_form.html");
         exit();
-    } elseif ($adress[$lastIndex] == "form.php") {
+    } elseif ($adress[$lastIndex] == "pages/form.php") {
         session_start();
         echo "Form";
 
         echo '<pre>';
         print_r($_POST);
         echo '</pre>';
-        
-        //echo $_SESSION['username'];
-        //$key = 'sql';
+
         $response = getClientByEmail($_SESSION['username'],$key);
         $tmp = explode(' - ',$response);
             $result = [];
-    
+
             foreach ($tmp as $line) {
             $parts = explode(':', $line);
             $key_ = trim($parts[0]);
@@ -332,10 +314,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '<pre>';
         print_r($result);
         echo '</pre>';
-        
+
         echo record_vote($_POST['question_id'],$result['username'],$_POST['answer'],$_POST['question'],$key);
         $curl = curl_init();
-        //$key = 'sql';
         $user = urlencode($result['username']);
         $answer = urlencode($_POST['answer']);
         $question = urlencode($_POST['question']);
@@ -357,7 +338,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             file_put_contents("question_answer.txt", $data, FILE_APPEND | LOCK_EX);
         }
         $_SESSION['errors'] = "Válasza sikeresen rögzítve lett";
-        header("Location: form.php");
+        header("Location: pages/form.php");
         exit();
     }
     elseif ($adress[$lastIndex] == "votecreate.php") {
@@ -371,13 +352,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //echo "<p><strong>{$key}:</strong> {$value}</p>";
             $data = PHP_EOL . $key . ": " . $value . PHP_EOL;
             file_put_contents("questions.txt", $data, FILE_APPEND | LOCK_EX);
-            include "szavazat.php";
-            include "kerdes.php";
+            include "pages/szavazat.php";
+            include "pages/kerdes.php";
             postNewQuestion($value,$_SESSION['db_key']);
         }
         $_SESSION['errors'] = "Sikeresen létre hozott egy új kérdést";
         echo $_SESSION['errors'];
-        header("Location: form.php");
+        header("Location: pages/form.php");
         exit();
     }
 }
